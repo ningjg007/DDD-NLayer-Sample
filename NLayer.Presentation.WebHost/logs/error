@@ -1,0 +1,85 @@
+﻿
+2015-04-22 14:25:33,133 [12] ERROR System.InvalidOperationException [(null)] - Message: 尝试创建“NLayer.Presentation.WebHost.Areas.UserSystem.Controllers.RoleController”类型的控制器时出错。请确保控制器具有无参数公共构造函数。
+Type: System.InvalidOperationException
+StackTrace:    在 System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+InnerException: Message: 没有为该对象定义无参数的构造函数。
+	Type: System.MissingMethodException
+	StackTrace:    在 System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+	   在 System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+	   在 System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+	   在 System.Activator.CreateInstance(Type type, Boolean nonPublic)
+	   在 System.Activator.CreateInstance(Type type)
+	   在 System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+	InnerException: 
+
+2015-04-22 14:26:47,031 [12] ERROR System.InvalidOperationException [(null)] - Message: 尝试创建“NLayer.Presentation.WebHost.Areas.UserSystem.Controllers.RoleController”类型的控制器时出错。请确保控制器具有无参数公共构造函数。
+Type: System.InvalidOperationException
+StackTrace:    在 System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+InnerException: Message: 没有为该对象定义无参数的构造函数。
+	Type: System.MissingMethodException
+	StackTrace:    在 System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+	   在 System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+	   在 System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+	   在 System.Activator.CreateInstance(Type type, Boolean nonPublic)
+	   在 System.Activator.CreateInstance(Type type)
+	   在 System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+	InnerException: 
+
+2015-04-22 14:41:53,101 [8] ERROR System.InvalidOperationException [(null)] - Message: 尝试创建“NLayer.Presentation.WebHost.Areas.UserSystem.Controllers.RoleController”类型的控制器时出错。请确保控制器具有无参数公共构造函数。
+Type: System.InvalidOperationException
+StackTrace:    在 System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+InnerException: Message: None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'NLayer.Repository.UserSystemModule.Repositories.RoleRepository' can be invoked with the available services and parameters:
+	Cannot resolve parameter 'NLayer.Repository.UnitOfWork.INLayerUnitOfWork unitOfWork' of constructor 'Void .ctor(NLayer.Repository.UnitOfWork.INLayerUnitOfWork)'.
+	Type: Autofac.Core.DependencyResolutionException
+	StackTrace:    在 Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+	   在 Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+	   在 Autofac.Core.Resolving.InstanceLookup.<Execute>b__0()
+	   在 Autofac.Core.Lifetime.LifetimeScope.GetOrCreateAndShare(Guid id, Func`1 creator)
+	   在 Autofac.Core.Resolving.InstanceLookup.Execute()
+	   在 Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+	   在 Autofac.Core.Resolving.InstanceLookup.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+	   在 Autofac.Core.Activators.Reflection.AutowiringParameter.<>c__DisplayClass2.<CanSupplyValue>b__0()
+	   在 Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+	   在 Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+	   在 Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+	   在 Autofac.Core.Resolving.InstanceLookup.Execute()
+	   在 Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+	   在 Autofac.Core.Resolving.InstanceLookup.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+	   在 Autofac.Core.Activators.Reflection.AutowiringParameter.<>c__DisplayClass2.<CanSupplyValue>b__0()
+	   在 Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+	   在 Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+	   在 Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+	   在 Autofac.Core.Resolving.InstanceLookup.Execute()
+	   在 Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+	   在 Autofac.Core.Resolving.ResolveOperation.Execute(IComponentRegistration registration, IEnumerable`1 parameters)
+	   在 Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+	   在 Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+	   在 Autofac.ResolutionExtensions.ResolveOptionalService(IComponentContext context, Service service, IEnumerable`1 parameters)
+	   在 Autofac.ResolutionExtensions.ResolveOptional(IComponentContext context, Type serviceType)
+	   在 Autofac.Integration.Mvc.AutofacDependencyResolver.GetService(Type serviceType)
+	   在 System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+	InnerException: 

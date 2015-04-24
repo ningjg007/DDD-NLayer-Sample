@@ -1,0 +1,23 @@
+﻿@model IList<NLayer.Application.UserSystemModule.DTOs.RoleDTO>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>角色</h2>
+
+<table>
+    <tr>
+        <th>角色名称</th>
+        <th>描述</th>
+        <th>添加时间</th>
+    </tr>   
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>@item.Created.DisplayDate()</td>
+        </tr>
+    }
+</table>
+
