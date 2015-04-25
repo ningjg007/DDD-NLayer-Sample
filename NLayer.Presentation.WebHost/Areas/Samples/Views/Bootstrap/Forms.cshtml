@@ -1,0 +1,278 @@
+﻿@{
+    ViewBag.Title = "表单";
+}
+
+<div id="content-header">
+    <h1>首页 - Bootstrap示例 - 表单</h1>
+</div>
+<div id="breadcrumb">
+    <a href="@Url.Action("Index", "Home", new { area = "" }, null)" title="返回首页" class="tip-bottom"><i class="icon-home"></i> 首页</a>
+    <a href="@Url.Action("Index")">Bootstrap 示例</a>
+    <a href="#" class="current">表单</a>
+</div>
+<div class="container-fluid">
+
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon">
+                        <i class="icon-align-justify"></i>
+                    </span>
+                    <h5>Text inputs</h5>
+                </div>
+                <div class="widget-content nopadding">
+                    <form action="#" method="get" class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label">Normal text input</label>
+                        <div class="controls">
+                            <input type="text" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Password input</label>
+                        <div class="controls">
+                            <input type="password" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Input with description</label>
+                        <div class="controls">
+                            <input type="text" />
+                            <span class="help-block">This is a description</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Input with placeholder</label>
+                        <div class="controls">
+                            <input type="text" placeholder="This is a placeholder..." />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Normal textarea</label>
+                        <div class="controls">
+                            <textarea></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon">
+                        <i class="icon-align-justify"></i>
+                    </span>
+                    <h5>Rest of elements...</h5>
+                </div>
+                <div class="widget-content nopadding">
+                    <form action="#" method="get" class="form-horizontal">
+                        <div class="control-group">
+                            <label class="control-label">Select input</label>
+                            <div class="controls">
+                                <select>
+                                    <option />First option
+                                    <option />Second option
+                                    <option />Third option
+                                    <option />Fourth option
+                                    <option />Fifth option
+                                    <option />Sixth option
+                                    <option />Seventh option
+                                    <option />Eighth option
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Multiple Select input</label>
+                            <div class="controls">
+                                <select multiple="">
+                                    <option />First option
+                                    <option selected="" />Second option
+                                    <option />Third option
+                                    <option />Fourth option
+                                    <option />Fifth option
+                                    <option />Sixth option
+                                    <option />Seventh option
+                                    <option />Eighth option
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Color picker (hex)</label>
+                            <div class="controls">
+                                <input type="text" data-color="#000000" value="#000000" class="colorpicker input-small" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Color picker (rgba)</label>
+                            <div class="controls">
+                                <input type="text" data-color="rgba(244,202,56,0.5)" value="rgba(244,202,56,0.5)" data-color-format="rgba" class="colorpicker" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Date picker</label>
+                            <div class="controls">
+                                <input type="text" data-date="12-02-2012" data-date-format="dd-mm-yyyy" value="12-02-2012" class="datepicker" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Radio inputs</label>
+                            <div class="controls">
+                                <label><input type="radio" name="radios" /> First One</label>
+                                <label><input type="radio" name="radios" /> Second One</label>
+                                <label><input type="radio" name="radios" /> Third One</label>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Checkboxes</label>
+                            <div class="controls">
+                                <label><input type="checkbox" name="radios" /> First One</label>
+                                <label><input type="checkbox" name="radios" /> Second One</label>
+                                <label><input type="checkbox" name="radios" /> Third One</label>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">File upload input</label>
+                            <div class="controls">
+                                <input type="file" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 表单验证start -->
+    
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon">
+                        <i class="icon-align-justify"></i>
+                    </span>
+                    <h5>Basic validation</h5>
+                    <span class="label label-important">48 notices</span>
+                </div>
+                <div class="widget-content nopadding">
+                    <form class="form-horizontal" method="post" action="#" name="basic_validate" id="basic_validate" novalidate="novalidate">
+                    <div class="control-group">
+                        <label class="control-label">Required</label>
+                        <div class="controls">
+                            <input type="text" name="required" id="required" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Email</label>
+                        <div class="controls">
+                            <input type="text" name="email" id="email" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Date</label>
+                        <div class="controls">
+                            <input type="password" name="date" id="date" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">URL</label>
+                        <div class="controls">
+                            <input type="password" name="url" id="url" />
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <input type="submit" value="Validate" class="btn btn-primary" />
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon">
+                        <i class="icon-align-justify"></i>
+                    </span>
+                    <h5>Number validation</h5>
+                </div>
+                <div class="widget-content nopadding">
+                    <form class="form-horizontal" method="post" action="#" name="number_validate" id="number_validate" novalidate="novalidate">
+                    <div class="control-group">
+                        <label class="control-label">Minimal value</label>
+                        <div class="controls">
+                            <input type="text" name="min" id="min" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Maximum value</label>
+                        <div class="controls">
+                            <input type="text" name="max" id="max" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Only number</label>
+                        <div class="controls">
+                            <input type="text" name="number" id="number" />
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <input type="submit" value="Validate" class="btn btn-primary" />
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon">
+                            <i class="icon-align-justify"></i>
+                        </span>
+                        <h5>Password validation</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        <form class="form-horizontal" method="post" action="#" name="password_validate" id="password_validate" novalidate="novalidate">
+                        <div class="control-group">
+                            <label class="control-label">Password</label>
+                            <div class="controls">
+                                <input type="password" name="pwd" id="pwd" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Confirm password</label>
+                            <div class="controls">
+                                <input type="password" name="pwd2" id="pwd2" />
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <input type="submit" value="Validate" class="btn btn-primary" />
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 表单验证end -->
+
+
+</div>
+
+<link rel="stylesheet" href="/Content/uniform.css" />
+<link rel="stylesheet" href="/Content/select2.css" />
+<script src="/Scripts/jquery.uniform.js"></script>
+<script src="/Scripts/select2.min.js"></script>
+<script src="/Scripts/samples/sample.forms.js"></script>
+
+<script src="/Scripts/jquery.validate.js"></script>

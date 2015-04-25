@@ -7,7 +7,7 @@ using NLayer.Application.UserSystemModule.Services;
 
 namespace NLayer.Presentation.WebHost.Areas.UserSystem.Controllers
 {
-    public class RoleController : Controller
+    public class RoleController : UserSystemBaseController
     {
         IRoleService _roleService;
 

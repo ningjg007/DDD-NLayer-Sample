@@ -144,8 +144,12 @@
     <Compile Include="App_Start\ExceptionExtensions.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Samples\Controllers\BootstrapController.cs" />
+    <Compile Include="Areas\Samples\SamplesAreaRegistration.cs" />
+    <Compile Include="Areas\UserSystem\UserSystemBaseController.cs" />
     <Compile Include="Areas\UserSystem\Controllers\RoleController.cs" />
     <Compile Include="Areas\UserSystem\UserSystemAreaRegistration.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -155,30 +159,95 @@
   <ItemGroup>
     <Content Include="App_Data\Config\autofac.xml" />
     <Content Include="App_Data\Config\log4net.xml" />
-    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\colorpicker.css" />
+    <Content Include="Content\datepicker.css" />
+    <Content Include="Content\img\alpha.png" />
+    <Content Include="Content\img\breadcrumb.png" />
+    <Content Include="Content\img\demo\av1.jpg" />
+    <Content Include="Content\img\demo\av2.jpg" />
+    <Content Include="Content\img\demo\av3.jpg" />
+    <Content Include="Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\img\glyphicons-halflings.png" />
+    <Content Include="Content\img\gritter-light.png" />
+    <Content Include="Content\img\gritter.png" />
+    <Content Include="Content\img\hue.png" />
+    <Content Include="Content\img\icons\16\book.png" />
+    <Content Include="Content\img\icons\16\cabinet.png" />
+    <Content Include="Content\img\icons\16\calendar.png" />
+    <Content Include="Content\img\icons\16\client.png" />
+    <Content Include="Content\img\icons\16\database.png" />
+    <Content Include="Content\img\icons\16\download.png" />
+    <Content Include="Content\img\icons\16\graph.png" />
+    <Content Include="Content\img\icons\16\home.png" />
+    <Content Include="Content\img\icons\16\lock.png" />
+    <Content Include="Content\img\icons\16\mail.png" />
+    <Content Include="Content\img\icons\16\pdf.png" />
+    <Content Include="Content\img\icons\16\people.png" />
+    <Content Include="Content\img\icons\16\piechart.png" />
+    <Content Include="Content\img\icons\16\search.png" />
+    <Content Include="Content\img\icons\16\shopping-bag.png" />
+    <Content Include="Content\img\icons\16\survey.png" />
+    <Content Include="Content\img\icons\16\tag.png" />
+    <Content Include="Content\img\icons\16\user.png" />
+    <Content Include="Content\img\icons\16\wallet.png" />
+    <Content Include="Content\img\icons\16\web.png" />
+    <Content Include="Content\img\icons\32\book.png" />
+    <Content Include="Content\img\icons\32\cabinet.png" />
+    <Content Include="Content\img\icons\32\calendar.png" />
+    <Content Include="Content\img\icons\32\client.png" />
+    <Content Include="Content\img\icons\32\database.png" />
+    <Content Include="Content\img\icons\32\download.png" />
+    <Content Include="Content\img\icons\32\graph.png" />
+    <Content Include="Content\img\icons\32\home.png" />
+    <Content Include="Content\img\icons\32\lock.png" />
+    <Content Include="Content\img\icons\32\mail.png" />
+    <Content Include="Content\img\icons\32\pdf.png" />
+    <Content Include="Content\img\icons\32\people.png" />
+    <Content Include="Content\img\icons\32\piechart.png" />
+    <Content Include="Content\img\icons\32\search.png" />
+    <Content Include="Content\img\icons\32\shopping-bag.png" />
+    <Content Include="Content\img\icons\32\survey.png" />
+    <Content Include="Content\img\icons\32\tag.png" />
+    <Content Include="Content\img\icons\32\user.png" />
+    <Content Include="Content\img\icons\32\wallet.png" />
+    <Content Include="Content\img\icons\32\web.png" />
+    <Content Include="Content\img\larrow.png" />
+    <Content Include="Content\img\line.png" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\menu-active.png" />
+    <Content Include="Content\img\rarrow.png" />
+    <Content Include="Content\img\saturation.png" />
+    <Content Include="Content\img\select2.png" />
+    <Content Include="Content\img\select2x2.png" />
+    <Content Include="Content\img\spinner.gif" />
+    <Content Include="Content\img\sprite.png" />
+    <Content Include="Content\jquery.gritter.css" />
+    <Content Include="Content\select2.css" />
+    <Content Include="Content\unicorn.grey.css" />
+    <Content Include="Content\unicorn.main.css" />
+    <Content Include="Content\uniform.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\UserSystem\Views\web.config" />
     <Content Include="Areas\UserSystem\Views\_ViewStart.cshtml" />
     <Content Include="Areas\UserSystem\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\UserSystem\Views\Role\Index.cshtml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\bootstrap-colorpicker.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.7.2.min.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.gritter.min.js" />
+    <Content Include="Scripts\jquery.ui.custom.js" />
+    <Content Include="Scripts\jquery.uniform.js" />
     <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\samples\sample.gritter.js" />
+    <Content Include="Scripts\samples\sample.tables.js" />
+    <Content Include="Scripts\samples\sample.forms.js" />
+    <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\unicorn.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -189,22 +258,16 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Samples\Models\" />
+    <Folder Include="Areas\Samples\Views\Shared\" />
     <Folder Include="Areas\UserSystem\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NLayer.Application\NLayer.Application.csproj">
@@ -219,6 +282,36 @@
       <Project>{a56ef0ad-84af-4c64-ba87-6bb48a8d16ab}</Project>
       <Name>NLayer.IocModules</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Menus.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Samples\Views\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Samples\Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Samples\Views\Bootstrap\Buttons.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Samples\Views\Bootstrap\Tables.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Samples\Views\Bootstrap\Elements.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Samples\Views\Bootstrap\Forms.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Samples\Views\Bootstrap\Layouts.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Samples\Views\Bootstrap\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

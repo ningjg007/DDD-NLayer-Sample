@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Bootstrap示例 - 首页";
+}
+
+<div id="content-header">
+    <h1>Bootstrap示例 - 首页</h1>
+</div>
+<div id="breadcrumb">
+    <a href="@Url.Action("Index", "Home", new { area = "" }, null)" title="返回首页" class="tip-bottom"><i class="icon-home"></i> Bootstrap示例 - 首页</a>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="span6">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon">
+                        <i class="icon-bookmark"></i>
+                    </span>
+                    <h5>Bootstrap示例</h5>
+                </div>
+                <div class="widget-content">
+                    <p>
+                        @Html.ActionLink("按钮&图标", "Buttons", "Bootstrap", new { area = "Samples" }, new { @class = "btn" })
+                    </p>
+                    <p>
+                        @Html.ActionLink("UI元素", "Elements", "Bootstrap", new { area = "Samples" }, new { @class = "btn" })
+                    </p>
+                    <p>
+                        @Html.ActionLink("表格", "Tables", "Bootstrap", new { area = "Samples" }, new { @class = "btn" })
+                    </p>
+                    <p>
+                        @Html.ActionLink("表单", "Forms", "Bootstrap", new { area = "Samples" }, new { @class = "btn" })
+                    </p>
+                    <p>
+                        @Html.ActionLink("布局", "Layouts", "Bootstrap", new { area = "Samples" }, new { @class = "btn" })
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
