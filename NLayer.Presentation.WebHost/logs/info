@@ -180,3 +180,5 @@
 2015-04-26 23:05:08,981 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
 
 2015-04-26 23:05:10,035 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
+
+2015-04-26 23:15:44,953 [15] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
