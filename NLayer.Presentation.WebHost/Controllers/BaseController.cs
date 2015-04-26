@@ -8,5 +8,6 @@ namespace NLayer.Presentation.WebHost.Controllers
 {
     public class BaseController : Controller
     {
+
     }
 }

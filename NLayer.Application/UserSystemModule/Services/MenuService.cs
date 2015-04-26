@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Linq;
+using NLayer.Application.Exceptions;
+using NLayer.Application.Resources;
 using NLayer.Application.UserSystemModule.Converters;
 using NLayer.Application.UserSystemModule.DTOs;
 using NLayer.Domain.UserSystemModule.Aggregates.MenuAgg;
 using NLayer.Infrastructure.Entity;
+using NLayer.Infrastructure.Helper;
 using PagedList;
 
 namespace NLayer.Application.UserSystemModule.Services
@@ -27,6 +31,17 @@ namespace NLayer.Application.UserSystemModule.Services
         {
             var menu = menuDTO.ToModel();
             menu.Id = IdentityGenerator.NewSequentialGuid();
+            menu.Created = DateTime.UtcNow;
+
+            if (menu.Name.IsNullOrBlank())
+            {
+                throw new DataExistsException(UserSystemResource.Common_Name_Empty);
+            }
+
+            if (_Repository.Exists(menu))
+            {
+                throw new DataExistsException(UserSystemResource.Menu_Exists);
+            }
 
             _Repository.Add(menu);
 
@@ -44,6 +59,17 @@ namespace NLayer.Application.UserSystemModule.Services
             if (persisted != null) //if customer exist
             {
                 var current = menuDTO.ToModel();
+                current.Created = persisted.Created;    //不修改创建时间
+
+                if (current.Name.IsNullOrBlank())
+                {
+                    throw new DataExistsException(UserSystemResource.Common_Name_Empty);
+                }
+
+                if (_Repository.Exists(current))
+                {
+                    throw new DataExistsException(UserSystemResource.Menu_Exists);
+                }
 
                 //Merge changes
                 _Repository.Merge(persisted, current);
@@ -57,9 +83,9 @@ namespace NLayer.Application.UserSystemModule.Services
             }
         }
 
-        public void Remove(MenuDTO menuDTO)
+        public void Remove(Guid id)
         {
-            var menu = _Repository.Get(menuDTO.Id);
+            var menu = _Repository.Get(id);
 
             if (menu != null) //if exist
             {
@@ -70,13 +96,18 @@ namespace NLayer.Application.UserSystemModule.Services
             }
             else
             {
-                // Not Exists
+                throw new DataNotFoundException(UserSystemResource.Menu_NotExists);
             }
         }
 
-        public IPagedList<MenuDTO> FindBy(string module, int pageNumber, int pageSize)
+        public IPagedList<MenuDTO> FindBy(string module, string name, int pageNumber, int pageSize)
         {
-            throw new NotImplementedException();
+            var list = _Repository.FindBy(module, name, pageNumber, pageSize);
+            return new StaticPagedList<MenuDTO>(
+               list.ToList().Select(x=>x.ToDto()),
+               pageNumber,
+               pageSize,
+               list.TotalItemCount);
         }
     }
 }

@@ -6,7 +6,7 @@ using NLayer.Domain.UserSystemModule.Aggregates.RoleGroupAgg;
 using NLayer.Domain.UserSystemModule.Aggregates.UserAgg;
 using NLayer.Repository.UserSystemModule.Repositories;
 
-namespace NLayer.Application.IocModules
+namespace NLayer.IocModules
 {
     public class UserSystemIocModule : Module
     {

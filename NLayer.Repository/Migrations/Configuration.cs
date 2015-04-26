@@ -9,7 +9,7 @@ namespace NLayer.Repository.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = false;
             //AutomaticMigrationsEnabled = false;
             //ContextKey = "NLayer.Repository.UnitOfWork.NLayerUnitOfWork";

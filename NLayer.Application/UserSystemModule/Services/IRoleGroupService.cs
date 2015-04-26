@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using NLayer.Application.UserSystemModule.DTOs;
+using PagedList;
 
 namespace NLayer.Application.UserSystemModule.Services
 {
@@ -9,8 +11,12 @@ namespace NLayer.Application.UserSystemModule.Services
 
         void Update(RoleGroupDTO roleGroupDTO);
 
-        void Remove(RoleGroupDTO roleGroupDTO);
+        void Remove(Guid id);
 
         List<RoleGroupDTO> FindAll();
+
+        RoleGroupDTO FindBy(Guid id);
+
+        IPagedList<RoleGroupDTO> FindBy(string name, int pageNumber, int pageSize);
     }
 }

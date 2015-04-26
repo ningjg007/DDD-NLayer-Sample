@@ -49,6 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\DataExistsException.cs" />
+    <Compile Include="Exceptions\DataNotFoundException.cs" />
+    <Compile Include="Exceptions\DefinedException.cs" />
+    <Compile Include="Resources\UserSystemResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserSystemResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="UserSystemModule\Converters\UserSystemConverters.cs" />
     <Compile Include="UserSystemModule\Converters\MenuConverters.cs" />
     <Compile Include="UserSystemModule\Converters\RoleGroupConverters.cs" />
@@ -69,7 +77,12 @@
     <Compile Include="UserSystemModule\Services\RoleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\UserSystemResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserSystemResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NLayer.Domain\NLayer.Domain.csproj">
       <Project>{7d0ea711-7474-4a99-b97c-627f7db2e8ac}</Project>

@@ -1,4 +1,5 @@
-﻿using NLayer.Application.UserSystemModule.DTOs;
+﻿using System;
+using NLayer.Application.UserSystemModule.DTOs;
 using PagedList;
 
 namespace NLayer.Application.UserSystemModule.Services
@@ -9,8 +10,8 @@ namespace NLayer.Application.UserSystemModule.Services
 
         void Update(UserDTO userDTO);
 
-        void Remove(UserDTO userDTO);
+        void Remove(Guid id);
 
-        IPagedList<UserDTO> FindBy(int pageNumber, int pageSize);
+        IPagedList<UserDTO> FindBy(string name, int pageNumber, int pageSize);
     }
 }

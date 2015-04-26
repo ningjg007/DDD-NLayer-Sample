@@ -58,5 +58,6 @@ namespace NLayer.Infrastructure.Repository
         public abstract IEnumerable<TEntity> FindAll();
         public abstract void Add(TEntity item);
         public abstract void Remove(TEntity item);
+        public abstract bool Exists(TEntity item);
     }
 }

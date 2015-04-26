@@ -11,8 +11,10 @@ namespace NLayer.Repository.Initializer
         /// </summary>
         public static void Initialize()
         {
+            // 初始化时使用
             //Database.SetInitializer(new MigrateDatabaseToLatestVersion<NLayerUnitOfWork, Configuration>());
 
+            // 运行时使用
             Database.SetInitializer<NLayerUnitOfWork>(null);
         }
     }

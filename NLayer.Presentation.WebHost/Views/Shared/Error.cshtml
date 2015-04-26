@@ -1,18 +1,75 @@
 ﻿@{
     Layout = null;
 }
-
+@model HandleErrorInfo
+@{
+    var statusCode = (HttpStatusCode)ViewBag.StatusCode;
+}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width" />
-    <title>错误</title>
+    <title>NLayer</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="/Content/error.css" />
+    <script src="/Scripts/jquery-1.7.2.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
-    <hgroup>
-        <h1>错误。</h1>
-        <h2>处理你的请求时出错。</h2>
-    </hgroup>
+    <div id="content">
+
+        <div class="container">
+
+
+            <div class="row">
+
+                <div class="span12">
+
+                    <div class="error-container">
+
+                        <h1>Oops!</h1>
+
+                        <h2>@Convert.ToInt32(statusCode) @statusCode</h2>
+
+                        <div class="error-details">
+                            <p>Sorry, an error has occured, Requested page @statusCode.ToString().ToLower()!</p>
+                            <div class="span3"></div>
+                            <div class=" span5 alert alert-info alert-block">
+                                <button class="close" data-dismiss="alert">×</button>
+                                <strong>Info:</strong> <br />
+                                @Model.Exception.Message.Replace("NLayer.Presentation.WebHost.Areas.", "")
+                            </div>
+                        </div> <!-- /error-details -->
+
+                        <div class="error-actions">
+
+                        </div> <!-- /error-actions -->
+
+                    </div> <!-- /.error-container -->
+
+
+                </div> <!-- /.span12 -->
+
+            </div> <!-- /.row -->
+
+        </div> <!-- /.container -->
+
+    </div> <!-- /#content -->
+
+    
+    <div id="footer">
+
+        <div class="container">
+
+            <div class="row">
+
+            </div> <!-- /row -->
+
+        </div> <!-- /container -->
+
+    </div> <!-- /#footer -->
+
+
 </body>
 </html>

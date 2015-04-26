@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using EntityFramework.Extensions;
 using NLayer.Domain.UserSystemModule.Aggregates.MenuAgg;
@@ -15,19 +16,25 @@ namespace NLayer.Repository.UserSystemModule.Repositories
         {
         }
 
-        public IPagedList<Menu> FindBy(string module, int pageNumber, int pageSize)
+        public IPagedList<Menu> FindBy(string module, string name, int pageNumber, int pageSize)
         {
-            IQueryable<Menu> menuEntities = Table;
+            IQueryable<Menu> entities = Table; 
+            
+            if (name.NotNullOrBlank())
+            {
+                entities =
+                    entities.Where(x => x.Name.Contains(name));
+            }
 
             if (module.NotNullOrBlank())
             {
-                menuEntities =
-                        menuEntities.Where(x => x.Module == module);
+                entities =
+                        entities.Where(x => x.Module == module);
             }
 
-            var totalCountQuery = menuEntities.FutureCount();
-            var resultQuery = menuEntities
-                .OrderByDescending(x => x.Created)
+            var totalCountQuery = entities.FutureCount();
+            var resultQuery = entities
+                .OrderBy(x => x.SortOrder)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Future();
@@ -40,6 +47,17 @@ namespace NLayer.Repository.UserSystemModule.Repositories
                 pageNumber,
                 pageSize,
                 totalCount);
+        }
+
+        public new bool Exists(Menu item)
+        {
+            IQueryable<Menu> entities = Table;
+            entities = entities.Where(x => x.Module == item.Module && x.Name == item.Name);
+            if(item.Id != Guid.Empty)
+            {
+                entities = entities.Where(x => x.Id != item.Id);
+            }
+            return entities.Any();
         }
     }
 }

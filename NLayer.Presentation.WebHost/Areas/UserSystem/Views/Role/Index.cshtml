@@ -1,23 +1,79 @@
-﻿@model IList<NLayer.Application.UserSystemModule.DTOs.RoleDTO>
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<NLayer.Application.UserSystemModule.DTOs.RoleGroupDTO>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "角色管理";
+    var groupName = ViewBag.GroupName;
 }
 
-<h2>角色</h2>
+<div id="content-header">
+    <h1>首页 - 角色管理 - 角色组</h1>
+</div>
+<div id="breadcrumb">
+    <a href="@Url.Action("Index", "Home", new { area = "" }, null)" title="返回首页" class="tip-bottom"><i class="icon-home"></i> 首页</a>
+    <a href="@Url.Action("Index")">角色管理</a>
+    <a href="#" class="current">角色组</a>
+</div>
+<div class="container-fluid">
 
-<table>
-    <tr>
-        <th>角色名称</th>
-        <th>描述</th>
-        <th>添加时间</th>
-    </tr>   
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.Name</td>
-            <td>@item.Description</td>
-            <td>@item.Created.DisplayDate()</td>
-        </tr>
-    }
-</table>
 
+    <div class="row-fluid">
+        <div class="span12">
+            @using (Ajax.BeginForm("SearchGroup", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "ajaxRequestSuccess" }, new { @class = "form-inline" }))
+            {
+                <section>
+                    <input type="text" name="groupName" id="groupName" class="input-medium" placeholder="角色组名称" value="@groupName">&nbsp; &nbsp;
+                    <button type="submit" class="btn btn-primary">查询</button>&nbsp; &nbsp;
+                    <a href="@Url.Action("EditGroup")" class="btn btn-success" id="addnew">新增角色组</a>
+                </section>
+            }
+            <div class="widget-box">
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>角色组名称</th>
+                                <th>描述</th>
+                                <th>排序</th>
+                                <th>添加时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.SortOrder</td>
+                                    <td>@item.Created.Display()</td>
+                                    <td>
+                                        <a href="@Url.Action("RoleList", new { id = @item.Id })"><i class="icon-list"></i>角色</a>
+                                        <a href="@Url.Action("EditGroup", new { id = @item.Id })"><i class="icon-edit"></i>编辑</a>
+                                        <a href="@Url.Action("RemoveGroup", new { id = @item.Id })" class="ajax-remove" data-name="@item.Name"><i class="icon-remove"></i>删除</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="pagination pagination-right">
+                @Html.PagedListPager(
+                    Model,
+                    page => Url.Action(
+                        "Index",
+                        new RouteValueDictionary(new
+                        {
+                            page,
+                            groupName
+                        })),
+                        NLayer.Presentation.WebHost.DisplayExtensions.PagedListRenderOptions
+                    )
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

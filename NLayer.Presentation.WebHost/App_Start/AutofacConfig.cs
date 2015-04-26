@@ -9,7 +9,7 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using Microsoft.Practices.ServiceLocation;
-using NLayer.Application.IocModules;
+using NLayer.IocModules;
 
 namespace NLayer.Presentation.WebHost.App_Start
 {

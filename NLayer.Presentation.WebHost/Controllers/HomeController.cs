@@ -12,5 +12,10 @@ namespace NLayer.Presentation.WebHost.Controllers
         {
             return View();
         }
+
+        public ActionResult Error()
+        {
+            return View();
+        }
     }
 }

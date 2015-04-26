@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using NLayer.Application.Exceptions;
+using NLayer.Application.Resources;
 using NLayer.Application.UserSystemModule.Converters;
 using NLayer.Application.UserSystemModule.DTOs;
 using NLayer.Domain.UserSystemModule.Aggregates.RoleGroupAgg;
 using NLayer.Infrastructure.Entity;
+using NLayer.Infrastructure.Helper;
+using PagedList;
 
 namespace NLayer.Application.UserSystemModule.Services
 {
@@ -28,6 +32,17 @@ namespace NLayer.Application.UserSystemModule.Services
         {
             var roleGroup = roleGroupDTO.ToModel();
             roleGroup.Id = IdentityGenerator.NewSequentialGuid();
+            roleGroup.Created = DateTime.UtcNow;
+
+            if (roleGroup.Name.IsNullOrBlank())
+            {
+                throw new DataExistsException(UserSystemResource.Common_Name_Empty);
+            }
+
+            if (_Repository.Exists(roleGroup))
+            {
+                throw new DataExistsException(UserSystemResource.RoleGroup_Exists);
+            }
 
             _Repository.Add(roleGroup);
 
@@ -45,6 +60,17 @@ namespace NLayer.Application.UserSystemModule.Services
             if (persisted != null) //if customer exist
             {
                 var current = roleGroupDTO.ToModel();
+                current.Created = persisted.Created;    //不修改创建时间
+
+                if (current.Name.IsNullOrBlank())
+                {
+                    throw new DataExistsException(UserSystemResource.Common_Name_Empty);
+                }
+
+                if (_Repository.Exists(current))
+                {
+                    throw new DataExistsException(UserSystemResource.RoleGroup_Exists);
+                }
 
                 //Merge changes
                 _Repository.Merge(persisted, current);
@@ -58,9 +84,9 @@ namespace NLayer.Application.UserSystemModule.Services
             }
         }
 
-        public void Remove(RoleGroupDTO roleGroupDTO)
+        public void Remove(Guid id)
         {
-            var roleGroup = _Repository.Get(roleGroupDTO.Id);
+            var roleGroup = _Repository.Get(id);
 
             if (roleGroup != null) //if exist
             {
@@ -71,13 +97,29 @@ namespace NLayer.Application.UserSystemModule.Services
             }
             else
             {
-                // Not Exists
+                throw new DataNotFoundException(UserSystemResource.RoleGroup_NotExists);
             }
         }
 
         public List<RoleGroupDTO> FindAll()
         {
-            return _Repository.FindAll().Select(x => x.ToDto()).ToList();
+            return _Repository.FindAll().OrderBy(x => x.SortOrder)
+                .Select(x => x.ToDto()).ToList();
+        }
+
+        public RoleGroupDTO FindBy(Guid id)
+        {
+            return _Repository.Get(id).ToDto();
+        }
+
+        public IPagedList<RoleGroupDTO> FindBy(string name, int pageNumber, int pageSize)
+        {
+            var list = _Repository.FindBy(name, pageNumber, pageSize);
+            return new StaticPagedList<RoleGroupDTO>(
+               list.ToList().Select(x => x.ToDto()),
+               pageNumber,
+               pageSize,
+               list.TotalItemCount);
         }
     }
 }

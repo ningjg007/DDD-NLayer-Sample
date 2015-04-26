@@ -62,6 +62,13 @@
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\packages\CommonServiceLocation.1.0.0\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -140,6 +147,7 @@
   <ItemGroup>
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\CustomAjaxExceptionAttribute.cs" />
     <Compile Include="App_Start\DisplayExtensions.cs" />
     <Compile Include="App_Start\ExceptionExtensions.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -154,6 +162,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AjaxResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -224,7 +233,10 @@
     <Content Include="Content\img\spinner.gif" />
     <Content Include="Content\img\sprite.png" />
     <Content Include="Content\jquery.gritter.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\select2.css" />
+    <Content Include="Content\error.css" />
+    <Content Include="Content\common.css" />
     <Content Include="Content\unicorn.grey.css" />
     <Content Include="Content\unicorn.main.css" />
     <Content Include="Content\uniform.css" />
@@ -232,7 +244,6 @@
     <Content Include="Global.asax" />
     <Content Include="Areas\UserSystem\Views\web.config" />
     <Content Include="Areas\UserSystem\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\UserSystem\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\UserSystem\Views\Role\Index.cshtml" />
     <Content Include="Scripts\bootstrap-colorpicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
@@ -243,10 +254,13 @@
     <Content Include="Scripts\jquery.ui.custom.js" />
     <Content Include="Scripts\jquery.uniform.js" />
     <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\plugins\jquery.unobtrusive\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\plugins\jquery.unobtrusive\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\samples\sample.gritter.js" />
     <Content Include="Scripts\samples\sample.tables.js" />
     <Content Include="Scripts\samples\sample.forms.js" />
     <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\common.js" />
     <Content Include="Scripts\unicorn.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -264,7 +278,7 @@
     <Folder Include="Areas\Samples\Models\" />
     <Folder Include="Areas\Samples\Views\Shared\" />
     <Folder Include="Areas\UserSystem\Models\" />
-    <Folder Include="Models\" />
+    <Folder Include="Areas\UserSystem\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -312,6 +326,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Samples\Views\Bootstrap\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\UserSystem\Views\Role\EditGroup.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Confirm.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -11,7 +11,8 @@ namespace NLayer.Presentation.WebHost
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.min.js",
                         "~/Scripts/jquery.ui.custom.js",
-                        "~/Scripts/jquery.gritter.min.js"));
+                        "~/Scripts/jquery.gritter.min.js",
+                        "~/Scripts/plugins/jquery.unobtrusive/*.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.min.js",
@@ -21,11 +22,15 @@ namespace NLayer.Presentation.WebHost
             bundles.Add(new ScriptBundle("~/bundles/unicorn").Include(
                       "~/Scripts/unicorn.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/common").Include(
+                      "~/Scripts/common.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
                       "~/Content/bootstrap-responsive.min.css",
                       "~/Content/datepicker.css",
                       "~/Content/colorpicker.css",
+                      "~/Content/common.css",
                       "~/Content/unicorn.css",
                       "~/Content/unicorn.main.css",
                       "~/Content/unicorn.grey.css",

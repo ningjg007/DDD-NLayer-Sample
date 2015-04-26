@@ -7,6 +7,7 @@ namespace NLayer.Presentation.WebHost
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
+            filters.Add(new CustomAjaxExceptionAttribute());
             filters.Add(new HandleErrorAttribute());
         }
     }

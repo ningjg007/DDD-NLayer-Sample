@@ -80,5 +80,10 @@ namespace NLayer.Repository
             if (item == null) throw new ArgumentNullException("item");
             Table.Remove(item);
         }
+
+        public override bool Exists(TEntity item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

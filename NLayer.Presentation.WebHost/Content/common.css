@@ -1,0 +1,29 @@
+﻿
+/* ===============表格行变色================ */
+.table-bordered {
+  border-color:#e5eff6;
+}
+
+.table-striped tbody > tr:nth-child(2n+1) > td, 
+.table-striped tbody > tr:nth-child(2n+1) > th {
+  background:#fcfcfc;
+}
+
+.table-striped tbody tr:hover td, 
+.table-striped tbody tr:hover th {
+  background:#f5fafd;
+}
+
+/* ===============表格链接颜色================ */
+.table-striped a {
+  color: #333333;  
+  font-size: 11px;
+}
+
+.table-striped a:hover {
+  color: #666666;
+}
+
+.ajax-remove {
+    
+}

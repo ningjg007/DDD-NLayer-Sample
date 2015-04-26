@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Linq;
+using NLayer.Application.Exceptions;
+using NLayer.Application.Resources;
 using NLayer.Application.UserSystemModule.Converters;
 using NLayer.Application.UserSystemModule.DTOs;
 using NLayer.Domain.UserSystemModule.Aggregates.UserAgg;
 using NLayer.Infrastructure.Entity;
+using NLayer.Infrastructure.Helper;
 using PagedList;
 
 namespace NLayer.Application.UserSystemModule.Services
@@ -27,6 +31,17 @@ namespace NLayer.Application.UserSystemModule.Services
         {
             var user = userDTO.ToModel();
             user.Id = IdentityGenerator.NewSequentialGuid();
+            user.Created = DateTime.UtcNow;
+
+            if (user.Name.IsNullOrBlank())
+            {
+                throw new DataExistsException(UserSystemResource.Common_Name_Empty);
+            }
+
+            if (_Repository.Exists(user))
+            {
+                throw new DataExistsException(UserSystemResource.User_Exists);
+            }
 
             _Repository.Add(user);
 
@@ -44,6 +59,17 @@ namespace NLayer.Application.UserSystemModule.Services
             if (persisted != null) //if customer exist
             {
                 var current = userDTO.ToModel();
+                current.Created = persisted.Created;    //不修改创建时间
+
+                if (current.Name.IsNullOrBlank())
+                {
+                    throw new DataExistsException(UserSystemResource.Common_Name_Empty);
+                }
+
+                if (_Repository.Exists(current))
+                {
+                    throw new DataExistsException(UserSystemResource.User_Exists);
+                }
 
                 //Merge changes
                 _Repository.Merge(persisted, current);
@@ -53,13 +79,13 @@ namespace NLayer.Application.UserSystemModule.Services
             }
             else
             {
-                // Not Exists
+                throw new DataNotFoundException(UserSystemResource.User_NotExists);
             }
         }
 
-        public void Remove(UserDTO userDTO)
+        public void Remove(Guid id)
         {
-            var user = _Repository.Get(userDTO.Id);
+            var user = _Repository.Get(id);
 
             if (user != null) //if exist
             {
@@ -74,9 +100,14 @@ namespace NLayer.Application.UserSystemModule.Services
             }
         }
 
-        public IPagedList<UserDTO> FindBy(int pageNumber, int pageSize)
+        public IPagedList<UserDTO> FindBy(string name, int pageNumber, int pageSize)
         {
-            throw new NotImplementedException();
+            var list = _Repository.FindBy(name, pageNumber, pageSize);
+            return new StaticPagedList<UserDTO>(
+               list.ToList().Select(x => x.ToDto()),
+               pageNumber,
+               pageSize,
+               list.TotalItemCount);
         }
     }
 }

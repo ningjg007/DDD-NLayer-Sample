@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using PagedList.Mvc;
 
 namespace NLayer.Presentation.WebHost
 {
@@ -52,5 +53,23 @@ namespace NLayer.Presentation.WebHost
         {
             return value.HasValue ? value.Value.Display() : "";
         }
+
+        public static PagedListRenderOptions PagedListRenderOptions
+        {
+            get
+            {
+                return new PagedListRenderOptions
+                {
+                    LinkToFirstPageFormat = "首页",
+                    LinkToNextPageFormat = "下页",
+                    LinkToPreviousPageFormat = "上页",
+                    LinkToLastPageFormat = "末页",
+                    MaximumPageNumbersToDisplay = 5,
+                    DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+                };
+            }
+        }
+
+        public static int DefaultPageSize = 15;
     }
 }

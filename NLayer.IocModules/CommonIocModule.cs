@@ -1,14 +1,7 @@
 ﻿using Autofac;
-using NLayer.Application.UserSystemModule.Services;
-using NLayer.Domain.UserSystemModule.Aggregates.MenuAgg;
-using NLayer.Domain.UserSystemModule.Aggregates.RoleAgg;
-using NLayer.Domain.UserSystemModule.Aggregates.RoleGroupAgg;
-using NLayer.Domain.UserSystemModule.Aggregates.UserAgg;
-using NLayer.Infrastructure.UnitOfWork;
 using NLayer.Repository.UnitOfWork;
-using NLayer.Repository.UserSystemModule.Repositories;
 
-namespace NLayer.Application.IocModules
+namespace NLayer.IocModules
 {
     public class CommonIocModule : Module
     {
