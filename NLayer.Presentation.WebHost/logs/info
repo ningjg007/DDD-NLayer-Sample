@@ -1,184 +1,32 @@
 ﻿
-2015-04-26 10:08:22,105 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
+2015-04-28 07:25:20,221 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
 
-2015-04-26 10:08:23,616 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
+2015-04-28 07:25:21,606 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
 
-2015-04-26 10:22:15,293 [6] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
+2015-04-28 07:53:57,866 [30] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
 
-2015-04-26 10:25:48,162 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
+2015-04-28 07:54:27,496 [29] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
 
-2015-04-26 10:25:49,723 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
+2015-04-28 07:54:28,513 [29] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
 
-2015-04-26 10:33:28,562 [14] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
+2015-04-28 09:34:12,072 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
 
-2015-04-26 11:23:15,433 [23] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
+2015-04-28 09:34:17,612 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
 
-2015-04-26 11:23:16,442 [23] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
+2015-04-28 09:37:30,730 [7] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
 
-2015-04-26 11:26:58,992 [22] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
+2015-04-28 09:37:58,144 [13] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
 
-2015-04-26 11:30:27,164 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
+2015-04-28 09:37:59,480 [13] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
 
-2015-04-26 11:30:28,400 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
+2015-04-28 09:38:11,542 [8] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
 
-2015-04-26 11:35:40,419 [24] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
+2015-04-28 09:38:47,470 [14] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
 
-2015-04-26 11:35:55,531 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
+2015-04-28 09:38:48,745 [14] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
 
-2015-04-26 11:35:56,484 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
+2015-04-28 09:39:29,413 [15] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
 
-2015-04-26 11:44:04,824 [16] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
+2015-04-28 09:41:19,888 [5] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
 
-2015-04-26 11:46:48,607 [22] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 11:46:49,251 [22] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 11:54:27,227 [16] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 11:55:18,304 [14] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 11:55:19,321 [14] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 13:32:32,704 [5] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 13:41:57,097 [10] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 13:41:58,805 [10] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 13:44:27,115 [16] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 13:44:34,612 [10] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 13:44:35,598 [10] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 13:54:57,214 [18] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 13:55:06,921 [17] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 13:55:07,933 [17] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 14:01:11,079 [13] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 14:01:18,787 [17] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 14:01:19,769 [17] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 14:09:42,612 [21] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 14:09:54,051 [10] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 14:09:55,030 [10] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 14:11:13,461 [12] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 14:11:19,309 [10] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 14:11:20,265 [10] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 14:31:52,549 [8] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 14:40:36,530 [23] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 14:40:37,515 [23] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 18:56:02,020 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 18:56:03,391 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 18:56:41,282 [8] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 18:56:48,153 [11] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 18:56:49,177 [11] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 18:59:39,449 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 18:59:41,384 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 19:03:14,573 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 19:03:16,235 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 20:08:20,875 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 20:08:22,306 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 20:10:17,480 [9] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 20:12:01,257 [13] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 20:12:02,461 [13] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 20:34:13,844 [6] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 20:41:40,397 [33] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 20:41:41,557 [33] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 20:54:00,748 [18] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 21:05:29,295 [27] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 21:05:30,416 [27] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 21:13:47,297 [8] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 21:18:17,066 [12] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 21:18:18,148 [12] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 21:19:12,696 [17] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 21:21:21,375 [22] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 21:21:22,446 [22] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 21:25:40,200 [21] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 21:25:48,205 [22] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 21:25:49,198 [22] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 21:27:28,707 [21] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 21:27:36,435 [22] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 21:27:37,423 [22] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 21:29:38,969 [10] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 21:29:48,573 [22] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 21:29:49,584 [22] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 21:51:37,747 [20] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 21:52:41,139 [33] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 21:52:42,277 [33] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 22:11:14,508 [26] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 22:15:07,617 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 22:15:08,762 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 22:49:20,205 [35] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 22:49:27,370 [22] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 22:49:28,604 [22] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 23:02:39,992 [16] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 23:03:27,109 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 23:03:28,258 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 23:05:02,024 [15] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
-
-2015-04-26 23:05:08,981 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application starting...
-
-2015-04-26 23:05:10,035 [1] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.
-
-2015-04-26 23:15:44,953 [15] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application stopped.
+2015-04-28 09:41:21,014 [5] INFO  NLayer.Presentation.WebHost.MvcApplication [(null)] - Application started.

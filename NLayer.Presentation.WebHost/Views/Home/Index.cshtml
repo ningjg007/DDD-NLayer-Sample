@@ -1,4 +1,5 @@
-﻿@{
+﻿@using NLayer.Application.Modules
+@{
     ViewBag.Title = "首页";
 }
 
@@ -9,9 +10,30 @@
     <a href="@Url.Action("Index", "Home", new { area = "" }, null)" title="返回首页" class="tip-bottom"><i class="icon-home"></i> 首页</a>
 </div>
 <div class="container-fluid">
+    
     <div class="row-fluid">
         
-        <div class="span6">
+        <div class="span4">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon">
+                        <i class="icon-bookmark"></i>
+                    </span>
+                    <h5>系统模块</h5>
+                </div>
+                <div class="widget-content">
+                    <p>
+                        <label>@NLayerModulesType.BootstrapSamples.Display()</label>
+                        <label>@NLayerModulesType.UserSystem.Display()</label>
+                    </p>
+                    <p>
+                        @Html.DropDownList("module", NLayerModulesManager.ListAll().GetItemList("未选择", NLayerModulesType.UserSystem.ToString()))
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="span4">
             <div class="widget-box">
                 <div class="widget-title">
                     <span class="icon">
@@ -27,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <div class="span6">
+        <div class="span4">
             <div class="widget-box">
                 <div class="widget-title">
                     <span class="icon">
@@ -56,4 +78,5 @@
         </div>
 
     </div>
+
 </div>

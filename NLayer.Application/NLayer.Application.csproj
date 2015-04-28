@@ -52,6 +52,13 @@
     <Compile Include="Exceptions\DataExistsException.cs" />
     <Compile Include="Exceptions\DataNotFoundException.cs" />
     <Compile Include="Exceptions\DefinedException.cs" />
+    <Compile Include="Modules\NLayerModules.cs" />
+    <Compile Include="Modules\NLayerModulesManager.cs" />
+    <Compile Include="Resources\ModulesResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModulesResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\UserSystemResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,6 +85,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\ModulesResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModulesResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\UserSystemResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>UserSystemResource.Designer.cs</LastGenOutput>

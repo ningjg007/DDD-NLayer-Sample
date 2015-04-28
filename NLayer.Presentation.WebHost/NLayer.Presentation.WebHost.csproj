@@ -162,6 +162,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\NLayerHtmlHelper.cs" />
     <Compile Include="Models\AjaxResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -291,6 +292,10 @@
     <ProjectReference Include="..\NLayer.Domain\NLayer.Domain.csproj">
       <Project>{7d0ea711-7474-4a99-b97c-627f7db2e8ac}</Project>
       <Name>NLayer.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NLayer.Infrastructure\NLayer.Infrastructure.csproj">
+      <Project>{CEFB2502-74E9-4688-8B9E-DFF48DE1CC6A}</Project>
+      <Name>NLayer.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\NLayer.IocModules\NLayer.IocModules.csproj">
       <Project>{a56ef0ad-84af-4c64-ba87-6bb48a8d16ab}</Project>

@@ -29,3 +29,7 @@ _ReSharper*/
 [Tt]est[Rr]esult*
 packages/
 NLayer.Presentation.WebHost/logs/
+NLayer.Presentation.WebHost/logs/debug
+NLayer.Presentation.WebHost/logs/error
+NLayer.Presentation.WebHost/logs/fatal
+NLayer.Presentation.WebHost/logs/info

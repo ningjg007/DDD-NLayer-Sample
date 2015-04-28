@@ -22,5 +22,10 @@ namespace NLayer.Infrastructure.Helper
         {
             return !string.IsNullOrWhiteSpace(self);
         }
+
+        public static bool EqualsIgnoreCase(this string self, string other)
+        {
+            return self.Equals(other, StringComparison.OrdinalIgnoreCase);
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using NLayer.Application.Modules;
 using PagedList.Mvc;
 
 namespace NLayer.Presentation.WebHost
@@ -71,5 +72,10 @@ namespace NLayer.Presentation.WebHost
         }
 
         public static int DefaultPageSize = 15;
+
+        public static string Display(this NLayerModulesType value)
+        {
+            return NLayerModulesManager.Instance.GetModulesName(value);
+        }
     }
 }
