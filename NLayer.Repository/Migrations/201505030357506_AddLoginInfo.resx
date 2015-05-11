@@ -117,40 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Common_Name_Empty" xml:space="preserve">
-    <value>名称不能为空</value>
+  <data name="Target" xml:space="preserve">
+    <value>H4sIAAAAAAAEAO1dWW/kuBF+D5D/IOgpCbwt2/OSNbp34bTHAyPjA27PJm8DWmK3hdXRK1GOG0F+2T7kJ+UvhNTJUyJ1tNszxgI70xRZrCp+VUUWj/nf7/+d//wSBtYzTFI/jhb2yezYtmDkxp4fbRZ2htY//NX++ac//mH+0QtfrF+qeh9IPdwyShf2E0LbM8dJ3ScYgnQW+m4Sp/Eazdw4dIAXO6fHxz86JycOxCRsTMuy5vdZhPwQ5j/wz2UcuXCLMhBcxx4M0rIcf1nlVK0bEMJ0C1y4sG8+gx1MZvdwG6c+ipPd7Evko9v1P+LkV9s6D3yAeVrBYG1bIIpiBBDm+OxLClcoiaPNaosLQPCw20Jcbw2CFJaSnDXVdYU6PiVCOU3DipSbpSgODQmefCi15PDNe+narrWI9fgR6xvtiNS5Lhf2NYwy2+I7OlsGCalUq/kCf/WjGVZfstqlCIZ4gLIAzs43mwRuAILpjFDCP/M/jyym3VGNGAws8t+RtcwClCVwEcEMJSA4su6yx8B3/w53D/GvMFpEWRDQnGPe8TemABfdJfEWJmh3D9elPFeebTlsO4dvWDej2hTSfsp8/Pcb3Dd4DGCNC6e1Ofl/RQCDC1uMbV2Dl88w2qAnrGHwYluX/gv0qpKSKsYrNjDcCCVZZydLXHPyTr4kweR9FMCZvJtVnKDbxINJ1dNVhD6cGo/tMoEY3DU+LvCPB58MdxedG/Dsb3Jb4ijewST0U2IMqW3dwyCvkz7528Jb5ebzlal0mcThfRyUxkp/+7qKs8QlyowVFR5AsoGI5W7uNF6g1Tc0hMb1EA3ddz/xJv3EuUsgsA9vcbBmXMTNofZbmafSfisD12WLkJH7FfJFxRf/TeBLqGDKF3ELcr7IFxVf/DeBL6GCjC9tf0dojuPpCCXi6cif7z5ubKdwAVM38bfFjPh7dUBd8wgje+fnEUqHYOKHPiVxtlXzRlXhOKu/yPlqPpty1eGFSufJ+Z+8VO55ik+DfU6phbEcT06u8j75j3cX9O6CJnBBHZMNHQOXTjRE++9lWsROxrEq8o0YFPnz3ZbGxvfneONH++vp7l/e5B19xNCYfnHU26JlasmxOf0IgBTl3e1xJmS0wuBnHMolyHAn2TnnkPLCTkd0HON5msaun/dO8cRohJXlY+RZXRPFAiaVr8dIwU7P32I3hxlY2H8R9NNCs44BDU0689RKee5Q0mkI3cSkVvYkM9CBAktCHkuxjJQs2RObDwu30QUMIIJWkYPBTgCkLvBEc8Fg8PopSrAXlWBq42lEK4KwvrLUS/5p0UEZYytrnGUOFJRbWxhhzEA4ISelYkqdYG5YKzJfU+G0nZ1JwFB4zWUcITyfg0k19clnefSeojCTxENYTibTMvrxghDCK4ioYcC+vvHSjEYFpLCNmQAmkKC10EGojDgCiQJyGo1zT6WiULqxDjLlQlygUBgR15gaNpYRNqhT1VQpEB6kGoGu5rxWnGNApcIrRYXhmbcFVlRdNVB6VyhBEfZ0Ap+5AsRQx9GoADRYenFmJ8rfHs304hnFf4ncFh0oI9hkIKAnkgoFSCJbV2wzF5qNZl3A6SGouLciitse6/SiHcV66bNbRFcGqcHjXU3o69DUnIdxigMx1cEZR3FyZn4Ntlu8kqNO0pQl1qo4RrP8YWV+qiQsaDhuKjlcUnNb94TiBGwg97XYqrz0kxThNSB4BGTJt/RCoZoQiBWhpeqOjrXiqFUBp6pN/k4HfPmBoiJEc9QaZV5i+UIYoVxUyKFHbJafZwIBSCTJmmUcZGGkSvi0tS4yKHT7okSfQrF3TFMoSvQp5FvCNIG8QL99dTiEJlGV6VOhEqY0IarYQCdVjoVRS1Uo0pk7HCZ4CDoCBoX5MAtoLbi3O7yeoKcmlebQb2v87RoAdTKCJkMVv8PYUsNYNU3pCeB8SWMOXXmzQwUtsxVFE2I+vMPOaodduSgZFXvSJZcmABVt31H4zaKwWGWNBsA8l2KOPXmzQ4UdtXdIk6GKDWnlu4MCqbxUn1K5/UeTKYumA22rVOXmniBXWW5Ardm/Y4g1xfs3J3b9LHp2NmNg4L7ZhjInrZ7kkgSBZCdQlm4QFaZlajk5mb3lKfWqcQ+2yvxFT7YaSobM8YmQfmNN5UJNRppqpjMbVKlRSH0OGNuCzlgDLCR2e3K25zEVM7wG0a/dfkkNI/tVpYd7ajInN8LwqvLNb85+6TS2ySiXTWTjq2m7Yvb7EMaUSafvL0gMHkcxS2+QZG23WSN7VaX3e6oyJzfC2Kr2Cw7EIQubDnyVejpXbz5wmwzzMuHffYdX2AEoqtgW5v3Z90j2vziSOSMVZqvfgmXg4wlkU+EaRP4apqg4WWmfHp+ccpd/D+cirpOmXiDZMOFv47IDtoejoVnk/5ZBrE7Mztona+sBx0SjZ5C4TyD5Uwhe/kxTMr29NogQdTdtEB32tuogUsIxbp8Aedghbg//QN2nJ/vc+HxH4XBCwj3JtwogiWFU0VA1eMJpqavIgy8L+985gTPr6p9fSxpHVi7VmXVs/WcsIIsTv+8LwpL7Kd8O9tjV8QAA0oSmQqHstPE7FN8mFM2uHn3HYy5c6RlOjbq2M4gYczVn2DRhJHcmXr8Zpi3+is3Y4G5LfOvBXJ2VEOu25qO6raPuamCYMIsQIh+cGAO4YShNEbXaEqN646tOg40+vnVXAzRa0viexrfv/NhkZBVW/nbG9HV8R/9rfNIEJ3c6v/OW0URXebigwXNBf+q6Q4URBhMyCCBYYqlRAnxxT/ku8SPX34KAll1MsepMwYhkNTn+ywXcwohAQi6nTo8tOfqaOqfoLhWYXovsSkdTA6kYRPUAfqOAMhzk/cOqcyNvX+DSu3NLbdrv71asuXsc0R2pTgdOAh5tT9R27GAPiNHaZOcuHnXew50IMNxEmedichekOOE3On7aT0oYzhNfBURvJKa9NqD2G9N6wOoQYlrHYZED8k1CQGsK37w/0o5pB+CJ1Ad5DmRx9hpg2deCzAgsr7sUM3qm47Xe5DCOlSPhRXEDd3S8GEakllNhoyNG/lCJeI2aHzrxFRLlIyTFAayFDTL0hMe3SFIZvk/S8TyJtAu6QkdHhU9SPF8iJV580iBbrjbbHjZRdqD/8Iny3RMpbemTKDLmWweAr6AU46vBSPBzUqlYnb1yk3WtXhUYaD6p5ev/xEz9PET3SzOKo6ZCuOevGYheRJ3wUl9FEdx5v2dlJAsoHdHlx1kVEUR+tveg1EAZ98DXdRj3wl307BK5EysjPJ/TAnDNuw/C4oe/WNgmptydyO5qTCC6GuCa9ytGA/je1cCsZVsfEJpq1AWAN4Vjitgxxm33LQZ57qlFnOBZJOENpFYBjQE/zqNH4j0DPLmm/kUxPLdP/U1Dgvz7YhF0mWl1XecqWsfV9J7jqKoiHIFFwMNz7vME+WvgIvzZhVhc8nDuLyDIIDls9Ai9q+g2Q9sMYZFh+BjsaGWQVUJb//nLTizP89v8LF06hgiYTZ8cD7qN/pb5gVfzfSnZllaQIMuPTxCXF2OJVzMIbnY1pZs40iRUqq9eNT3AcBuQ57dvoxV4hn14wzb2GW6Au6uui6iJdA8Eq/b5hQ82CQjTkkbTHv/EGPbCl5/+D/ks75VYbwAA</value>
   </data>
-  <data name="Login_NameNotFound" xml:space="preserve">
-    <value>登陆名不存在</value>
-  </data>
-  <data name="Login_PasswordIncorrect" xml:space="preserve">
-    <value>登陆密码错误</value>
-  </data>
-  <data name="Login_TokenEmpty" xml:space="preserve">
-    <value>登陆Token不能为空</value>
-  </data>
-  <data name="Menu_Exists" xml:space="preserve">
-    <value>菜单已存在</value>
-  </data>
-  <data name="Menu_NotExists" xml:space="preserve">
-    <value>菜单不存在</value>
-  </data>
-  <data name="RoleGroup_Exists" xml:space="preserve">
-    <value>角色组已存在</value>
-  </data>
-  <data name="RoleGroup_NotExists" xml:space="preserve">
-    <value>角色组不存在</value>
-  </data>
-  <data name="Role_Exists" xml:space="preserve">
-    <value>角色已存在</value>
-  </data>
-  <data name="Role_NotExists" xml:space="preserve">
-    <value>角色不存在</value>
-  </data>
-  <data name="User_Exists" xml:space="preserve">
-    <value>用户已存在</value>
-  </data>
-  <data name="User_NotExists" xml:space="preserve">
-    <value>用户不存在</value>
+  <data name="DefaultSchema" xml:space="preserve">
+    <value>dbo</value>
   </data>
 </root>

@@ -59,7 +59,12 @@
     <Compile Include="Migrations\201504210841169_InitialCreate.Designer.cs">
       <DependentUpon>201504210841169_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505030357506_AddLoginInfo.cs" />
+    <Compile Include="Migrations\201505030357506_AddLoginInfo.Designer.cs">
+      <DependentUpon>201505030357506_AddLoginInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="UserSystemModule\Repositories\PermissionRepository.cs" />
     <Compile Include="UserSystemModule\Repositories\RoleGroupRepository.cs" />
     <Compile Include="UserSystemModule\Repositories\MenuRepository.cs" />
     <Compile Include="UserSystemModule\Repositories\UserRepository.cs" />
@@ -87,9 +92,13 @@
     <EmbeddedResource Include="Migrations\201504210841169_InitialCreate.resx">
       <DependentUpon>201504210841169_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505030357506_AddLoginInfo.resx">
+      <DependentUpon>201505030357506_AddLoginInfo.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Migrations\201504210841169_InitialCreate.sql" />
+    <Content Include="Migrations\201505030357506_AddLoginInfo.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

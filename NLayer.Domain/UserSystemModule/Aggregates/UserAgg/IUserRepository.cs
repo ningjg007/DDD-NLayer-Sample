@@ -1,4 +1,5 @@
-﻿using NLayer.Infrastructure.Repository;
+﻿using System;
+using NLayer.Infrastructure.Repository;
 using PagedList;
 
 namespace NLayer.Domain.UserSystemModule.Aggregates.UserAgg

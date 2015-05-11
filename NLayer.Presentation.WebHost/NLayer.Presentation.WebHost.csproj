@@ -163,6 +163,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\NLayerHtmlHelper.cs" />
+    <Compile Include="Managers\AuthorizeManager.cs" />
     <Compile Include="Models\AjaxResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -292,6 +293,14 @@
     <ProjectReference Include="..\NLayer.Domain\NLayer.Domain.csproj">
       <Project>{7d0ea711-7474-4a99-b97c-627f7db2e8ac}</Project>
       <Name>NLayer.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NLayer.Infrastructure.Authorize\NLayer.Infrastructure.Authorize.csproj">
+      <Project>{44487f6e-c066-4f62-85e4-0c2fe4a10eb5}</Project>
+      <Name>NLayer.Infrastructure.Authorize</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NLayer.Infrastructure.Utility\NLayer.Infrastructure.Utility.csproj">
+      <Project>{f4f08667-3fc3-4b94-8caa-a66289270c21}</Project>
+      <Name>NLayer.Infrastructure.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\NLayer.Infrastructure\NLayer.Infrastructure.csproj">
       <Project>{CEFB2502-74E9-4688-8B9E-DFF48DE1CC6A}</Project>

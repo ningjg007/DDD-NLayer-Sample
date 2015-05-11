@@ -59,5 +59,7 @@ namespace NLayer.Infrastructure.Repository
         public abstract void Add(TEntity item);
         public abstract void Remove(TEntity item);
         public abstract bool Exists(TEntity item);
+        public abstract TEntity Find(Func<TEntity, bool> acquire);
+        public abstract IQueryable<TEntity> Collection { get; }
     }
 }

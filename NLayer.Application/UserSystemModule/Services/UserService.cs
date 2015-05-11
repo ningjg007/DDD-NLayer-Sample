@@ -43,6 +43,7 @@ namespace NLayer.Application.UserSystemModule.Services
                 throw new DataExistsException(UserSystemResource.User_Exists);
             }
 
+            user.LoginPwd = AuthService.EncryptPassword(user.LoginPwd);
             _Repository.Add(user);
 
             //commit the unit of work
@@ -60,6 +61,7 @@ namespace NLayer.Application.UserSystemModule.Services
             {
                 var current = userDTO.ToModel();
                 current.Created = persisted.Created;    //不修改创建时间
+                current.LoginPwd = persisted.LoginPwd;    //不修改密码
 
                 if (current.Name.IsNullOrBlank())
                 {

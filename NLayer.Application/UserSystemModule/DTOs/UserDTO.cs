@@ -15,5 +15,9 @@ namespace NLayer.Application.UserSystemModule.DTOs
         public string Email { get; set; }
 
         public DateTime Created { get; set; }
+
+        public string LastLoginToken { get; set; }
+
+        public DateTime LastLogin { get; set; }
     }
 }

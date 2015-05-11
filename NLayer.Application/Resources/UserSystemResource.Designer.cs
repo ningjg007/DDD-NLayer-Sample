@@ -70,6 +70,33 @@ namespace NLayer.Application.Resources {
         }
         
         /// <summary>
+        ///   查找类似 登陆名不存在 的本地化字符串。
+        /// </summary>
+        internal static string Login_NameNotFound {
+            get {
+                return ResourceManager.GetString("Login_NameNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 登陆密码错误 的本地化字符串。
+        /// </summary>
+        internal static string Login_PasswordIncorrect {
+            get {
+                return ResourceManager.GetString("Login_PasswordIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 登陆Token不能为空 的本地化字符串。
+        /// </summary>
+        internal static string Login_TokenEmpty {
+            get {
+                return ResourceManager.GetString("Login_TokenEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 菜单已存在 的本地化字符串。
         /// </summary>
         internal static string Menu_Exists {

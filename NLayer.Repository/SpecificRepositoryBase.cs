@@ -85,5 +85,15 @@ namespace NLayer.Repository
         {
             throw new NotImplementedException();
         }
+
+        public override TEntity Find(Func<TEntity, bool> acquire)
+        {
+            return Table.FirstOrDefault(acquire);
+        }
+
+        public override IQueryable<TEntity> Collection
+        {
+            get { return Table.AsQueryable(); }
+        }
     }
 }

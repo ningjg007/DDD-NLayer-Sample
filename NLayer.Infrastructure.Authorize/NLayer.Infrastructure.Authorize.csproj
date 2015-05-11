@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7D0EA711-7474-4A99-B97C-627F7DB2E8AC}</ProjectGuid>
+    <ProjectGuid>{44487F6E-C066-4F62-85E4-0C2FE4A10EB5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NLayer.Domain</RootNamespace>
-    <AssemblyName>NLayer.Domain</AssemblyName>
+    <RootNamespace>NLayer.Infrastructure.Authorize</RootNamespace>
+    <AssemblyName>NLayer.Infrastructure.Authorize</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,12 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PagedList">
-      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,29 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UserSystemModule\Aggregates\MenuAgg\IPermissionRepository.cs" />
-    <Compile Include="UserSystemModule\Aggregates\MenuAgg\IMenuRepository.cs" />
-    <Compile Include="UserSystemModule\Aggregates\MenuAgg\Menu.cs" />
-    <Compile Include="UserSystemModule\Aggregates\MenuAgg\Permission.cs" />
-    <Compile Include="UserSystemModule\Aggregates\RoleGroupAgg\IRoleGroupRepository.cs" />
-    <Compile Include="UserSystemModule\Aggregates\RoleGroupAgg\RoleGroup.cs" />
-    <Compile Include="UserSystemModule\Aggregates\RoleAgg\IRoleRepository.cs" />
-    <Compile Include="UserSystemModule\Aggregates\RoleAgg\Role.cs" />
-    <Compile Include="UserSystemModule\Aggregates\UserAgg\IUserRepository.cs" />
-    <Compile Include="UserSystemModule\Aggregates\UserAgg\User.cs" />
+    <Compile Include="AuthObject\MenuForAuthorize.cs" />
+    <Compile Include="AuthObject\PermissionForAuthorize.cs" />
+    <Compile Include="AuthObject\UserForAuthorize.cs" />
+    <Compile Include="AuthorizeException.cs" />
+    <Compile Include="AuthorizeFilterAttribute.cs" />
+    <Compile Include="IAuthorizeManager.cs" />
+    <Compile Include="MenuAttribute.cs" />
+    <Compile Include="PermissionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UserSystemModule\Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NLayer.Infrastructure\NLayer.Infrastructure.csproj">
-      <Project>{cefb2502-74e9-4688-8b9e-dff48de1cc6a}</Project>
-      <Name>NLayer.Infrastructure</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

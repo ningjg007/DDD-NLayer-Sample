@@ -23,6 +23,10 @@ namespace NLayer.Domain.UserSystemModule.Aggregates.UserAgg
 
         public DateTime Created { get; set; }
 
+        public string LastLoginToken { get; set; }
+
+        public DateTime LastLogin { get; set; }
+
         public virtual ICollection<Role> Roles { get; set; }
 
         public virtual ICollection<Permission> Permissions { get; set; }
