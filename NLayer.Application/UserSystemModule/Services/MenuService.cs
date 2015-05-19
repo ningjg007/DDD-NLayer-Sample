@@ -100,6 +100,10 @@ namespace NLayer.Application.UserSystemModule.Services
             }
         }
 
+        public MenuDTO FindBy(Guid id)
+        {
+            return _Repository.Get(id).ToDto();
+        }
         public IPagedList<MenuDTO> FindBy(string module, string name, int pageNumber, int pageSize)
         {
             var list = _Repository.FindBy(module, name, pageNumber, pageSize);
