@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "菜单管理";
+    var groupName = ViewBag.MenuName;
+}
+@model NLayer.Application.UserSystemModule.DTOs.MenuDTO
+<div id="content-header">
+    <h1>首页 - 菜单管理</h1>
+</div>
+<div id="breadcrumb">
+    <a href="@Url.Action("Index", "Home", new { area = "" }, null)" title="返回首页" class="tip-bottom"><i class="icon-home"></i> 首页</a>
+    <a href="@Url.Action("Index")">菜单管理</a>
+</div>
+<div class="container-fluid">
+
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon">
+                        <i class="icon-align-justify"></i>
+                    </span>
+                    <h5>添加 / 编辑菜单</h5>
+                </div>
+                <div class="widget-content nopadding">
+                    @using (Ajax.BeginForm("EditMenu", new { id = Model.Id }, new AjaxOptions { HttpMethod = "Post", OnSuccess = "ajaxRequestSuccess" }, new { @class = "form-horizontal" }))
+                    {
+                        <div class="control-group">
+                            <label class="control-label">名称</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(x => x.Name, new { placeholder = "名称" })
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">代码</label>
+                            <div class="controls">
+                                @Html.TextAreaFor(x => x.Code, new { placeholder = "菜单代码" })
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">链接</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(x => x.Url, new { placeholder = "菜单链接" })
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">模块</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(x => x.Module, new { placeholder = "菜单模块" })
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">排序</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(x => x.SortOrder, new { placeholder = "排序" })
+                            </div>
+                        </div>
+                         <div class="control-group" style="display:none">
+                            <label class="control-label">权限</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(x => x.Permissions, new { placeholder = "权限" })
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
