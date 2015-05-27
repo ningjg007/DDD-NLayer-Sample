@@ -17,6 +17,20 @@
         });
         return false;
     });
+
+    var url = location.href;
+    $(".submenu").each(function() {
+        var menu = $(this).data("menu");
+        if (url.match("/" + menu)) {
+            $(this).addClass("open");
+        }
+    });
+    
+    $("#sidebar .open li a").each(function () {
+        if (url.match($(this).attr("href"))) {
+            $(this).parent().addClass("active");
+        }
+    });
 });
 
 function ajaxRequestSuccess(resp) {

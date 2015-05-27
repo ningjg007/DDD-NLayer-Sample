@@ -17,6 +17,8 @@ namespace NLayer.Infrastructure.Authorize
 
         void SignOut();
 
+        void RedirectToLoginPage();
+
         bool ValidatePermission(string permissionCode, bool throwExceptionIfNotPass = true);
     }
 }

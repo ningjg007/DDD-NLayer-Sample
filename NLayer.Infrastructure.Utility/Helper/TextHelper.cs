@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace NLayer.Infrastructure.Helper
+namespace NLayer.Infrastructure.Utility.Helper
 {
     public static class TextHelper
     {

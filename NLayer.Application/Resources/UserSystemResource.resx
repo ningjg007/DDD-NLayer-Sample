@@ -120,8 +120,14 @@
   <data name="Common_Name_Empty" xml:space="preserve">
     <value>名称不能为空</value>
   </data>
+  <data name="Login_NameEmpty" xml:space="preserve">
+    <value>登陆名不能为空</value>
+  </data>
   <data name="Login_NameNotFound" xml:space="preserve">
     <value>登陆名不存在</value>
+  </data>
+  <data name="Login_PasswordEmpty" xml:space="preserve">
+    <value>密码不能为空</value>
   </data>
   <data name="Login_PasswordIncorrect" xml:space="preserve">
     <value>登陆密码错误</value>

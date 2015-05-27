@@ -10,8 +10,8 @@ using NLayer.Application.UserSystemModule.Converters;
 using NLayer.Application.UserSystemModule.DTOs;
 using NLayer.Domain.UserSystemModule.Aggregates.MenuAgg;
 using NLayer.Domain.UserSystemModule.Aggregates.UserAgg;
-using NLayer.Infrastructure.Helper;
 using NLayer.Infrastructure.Utility;
+using NLayer.Infrastructure.Utility.Helper;
 
 namespace NLayer.Application.UserSystemModule.Services
 {
@@ -21,20 +21,7 @@ namespace NLayer.Application.UserSystemModule.Services
 
         IUserRepository _UserRepository;
 
-        private static string AuthSecret
-        {
-            get
-            {
-                var authSecret = ConfigurationManager.AppSettings["NLayer:AuthSecret"];
-                if (authSecret.IsNullOrBlank())
-                {
-                    throw new ConfigurationErrorsException("missing \"NLayer:AuthSecret\" appSetting.");
-                }
-                return authSecret;
-            }
-        }
-
-        private void UpdateLoginToken(Guid id, string loginToken)
+        private void UpdateLoginToken(Guid id, string loginToken, DateTime lastLoginTime)
         {
             var user = _UserRepository.Get(id);
 
@@ -44,6 +31,7 @@ namespace NLayer.Application.UserSystemModule.Services
             }
 
             user.LastLoginToken = loginToken;
+            user.LastLogin = lastLoginTime;
 
             //commit unit of work
             _UserRepository.UnitOfWork.Commit();
@@ -65,6 +53,16 @@ namespace NLayer.Application.UserSystemModule.Services
 
         public UserDTO Login(string loginName, string password, bool updateLoginToken)
         {
+            if (loginName.IsNullOrBlank())
+            {
+                throw new ArgumentEmptyException(UserSystemResource.Login_NameEmpty);
+            }
+
+            if (password.IsNullOrBlank())
+            {
+                throw new ArgumentEmptyException(UserSystemResource.Login_PasswordEmpty);
+            }
+
             var user = _UserRepository.Find(x => x.LoginName.Equals(loginName));
 
             if (user == null)
@@ -80,7 +78,7 @@ namespace NLayer.Application.UserSystemModule.Services
             if (updateLoginToken)
             {
                 var newToken = SecurityHelper.NetxtString(24).ToLower();
-                UpdateLoginToken(user.Id, newToken);
+                UpdateLoginToken(user.Id, newToken, DateTime.UtcNow);
                 user.LastLoginToken = newToken;
             }
 
@@ -199,10 +197,7 @@ namespace NLayer.Application.UserSystemModule.Services
 
         public static string EncryptPassword(string password)
         {
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(password + "_" + AuthSecret);
-            byte[] sha1Bytes = System.Security.Cryptography.SHA1.Create().ComputeHash(bytes);
-            string secretPart = BitConverter.ToString(sha1Bytes).Replace("-", string.Empty);
-            return secretPart;
+            return SecurityHelper.EncryptPassword(password);
         }
     }
 }

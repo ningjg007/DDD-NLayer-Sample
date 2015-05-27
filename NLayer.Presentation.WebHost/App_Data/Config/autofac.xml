@@ -2,6 +2,9 @@
 <autofac>
   <components>
     <!-- ... -->
+    <!--<component type="NLayer.Infrastructure.Authorize.AuthorizeFilterAttribute, NLayer.Infrastructure.Authorize"
+               inject-properties="yes">
+    </component>-->
   </components>
   <modules>
     <!-- ... -->

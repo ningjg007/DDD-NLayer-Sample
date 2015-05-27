@@ -42,6 +42,12 @@
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac.Configuration">
+      <HintPath>..\packages\Autofac.Configuration.3.3.0\lib\net40\Autofac.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Extras.CommonServiceLocator">
+      <HintPath>..\packages\Autofac.Extras.CommonServiceLocator.3.2.0\lib\net40\Autofac.Extras.CommonServiceLocator.dll</HintPath>
+    </Reference>
     <Reference Include="Autofac.Integration.Mvc">
       <HintPath>..\packages\Autofac.Mvc5.3.3.3\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
@@ -59,8 +65,9 @@
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\packages\CommonServiceLocation.1.0.0\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CommonServiceLocator.1.2\lib\portable-windows8+net40+sl5+windowsphone8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -157,13 +164,16 @@
     <Compile Include="Areas\UserSystem\UserSystemBaseController.cs" />
     <Compile Include="Areas\UserSystem\Controllers\RoleController.cs" />
     <Compile Include="Areas\UserSystem\UserSystemAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseAuthorizeController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\IServiceResolver.cs" />
+    <Compile Include="Helper\NLayerServiceResolver.cs" />
     <Compile Include="Helper\NLayerHtmlHelper.cs" />
-    <Compile Include="Managers\AuthorizeManager.cs" />
     <Compile Include="Models\AjaxResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -174,6 +184,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\colorpicker.css" />
     <Content Include="Content\datepicker.css" />
+    <Content Include="Content\img\signin\check.png" />
+    <Content Include="Content\img\signin\login-bg.png" />
+    <Content Include="Content\img\signin\password.png" />
+    <Content Include="Content\img\signin\user.png" />
+    <Content Include="Content\login.css" />
     <Content Include="Content\img\alpha.png" />
     <Content Include="Content\img\breadcrumb.png" />
     <Content Include="Content\img\demo\av1.jpg" />
@@ -281,6 +296,7 @@
     <Folder Include="Areas\Samples\Views\Shared\" />
     <Folder Include="Areas\UserSystem\Models\" />
     <Folder Include="Areas\UserSystem\Views\Shared\" />
+    <Folder Include="Views\Common\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -346,6 +362,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Confirm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -4,7 +4,7 @@ using System.Linq;
 using EntityFramework.Extensions;
 using NLayer.Domain.UserSystemModule.Aggregates.RoleAgg;
 using NLayer.Domain.UserSystemModule.Aggregates.RoleGroupAgg;
-using NLayer.Infrastructure.Helper;
+using NLayer.Infrastructure.Utility.Helper;
 using NLayer.Repository.UnitOfWork;
 using PagedList;
 

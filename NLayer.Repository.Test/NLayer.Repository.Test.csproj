@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthTests.cs" />
     <Compile Include="EfTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -62,6 +63,10 @@
     <ProjectReference Include="..\NLayer.Domain\NLayer.Domain.csproj">
       <Project>{7d0ea711-7474-4a99-b97c-627f7db2e8ac}</Project>
       <Name>NLayer.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NLayer.Infrastructure.Utility\NLayer.Infrastructure.Utility.csproj">
+      <Project>{f4f08667-3fc3-4b94-8caa-a66289270c21}</Project>
+      <Name>NLayer.Infrastructure.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\NLayer.Infrastructure\NLayer.Infrastructure.csproj">
       <Project>{cefb2502-74e9-4688-8b9e-dff48de1cc6a}</Project>

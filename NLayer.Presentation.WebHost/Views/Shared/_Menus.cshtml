@@ -2,7 +2,7 @@
     <a href="#" class="visible-phone"><i class="icon icon-home"></i> 首页</a>
     <ul>
         <li><a href="@Url.Action("Index", "Home", new { area = "" }, null)"><i class="icon icon-home"></i> <span>首页</span></a></li>
-        <li class="submenu">
+        <li class="submenu" data-menu="UserSystem">
             <a href="#"><i class="icon icon-th-list"></i> <span>用户系统</span> <span class="label">3</span></a>
             <ul>
                 <li><a href="@Url.Action("Index", "Role", new { area = "UserSystem" }, null)">角色管理</a></li>
@@ -10,10 +10,10 @@
                 <li><a href="menus.html">菜单管理</a></li>
             </ul>
         </li>
-        <li class="active submenu open">
-            <a href="#"><i class="icon icon-file"></i> <span>Bootstrap示例</span> <span class="label">5</span></a>
+        <li class="submenu" data-menu="Bootstrap">
+            <a href="#"><i class="icon icon-list"></i> <span>Bootstrap示例</span> <span class="label">5</span></a>
             <ul>
-                <li class="active"><a href="@Url.Action("Buttons", "Bootstrap", new { area = "Samples" }, null)">按钮&amp;图标</a></li>
+                <li><a href="@Url.Action("Buttons", "Bootstrap", new { area = "Samples" }, null)">按钮&amp;图标</a></li>
                 <li><a href="@Url.Action("Elements", "Bootstrap", new { area = "Samples" }, null)">UI元素</a></li>
                 <li><a href="@Url.Action("Tables", "Bootstrap", new { area = "Samples" }, null)">表格</a></li>
                 <li><a href="@Url.Action("Forms", "Bootstrap", new { area = "Samples" }, null)">表单</a></li>

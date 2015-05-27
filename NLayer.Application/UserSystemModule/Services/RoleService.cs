@@ -7,7 +7,7 @@ using NLayer.Application.UserSystemModule.Converters;
 using NLayer.Application.UserSystemModule.DTOs;
 using NLayer.Domain.UserSystemModule.Aggregates.RoleAgg;
 using NLayer.Infrastructure.Entity;
-using NLayer.Infrastructure.Helper;
+using NLayer.Infrastructure.Utility.Helper;
 using PagedList;
 
 namespace NLayer.Application.UserSystemModule.Services

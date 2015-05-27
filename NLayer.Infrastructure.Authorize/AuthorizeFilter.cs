@@ -9,7 +9,7 @@ using System.Web.Security;
 
 namespace NLayer.Infrastructure.Authorize
 {
-    public class AuthorizeFilterAttribute : AuthorizeAttribute
+    public class AuthorizeFilter : AuthorizeAttribute
     {
         public IAuthorizeManager AuthorizeManager { get; set; }
 

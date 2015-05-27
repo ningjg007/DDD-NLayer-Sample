@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using NLayer.Infrastructure.Authorize.AuthObject
+@{
+    var user = ViewBag.CurrentUser as UserForAuthorize;
+    var loginName = user == null ? string.Empty : user.LoginName;
+}
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <title>NLayer</title>
@@ -17,9 +22,9 @@
         </div>
         <div id="user-nav" class="navbar navbar-inverse">
             <ul class="nav btn-group">
-                <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-user"></i> <span class="text">个人资料</span></a></li>
+                <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-user"></i> <span class="text">@loginName 个人资料</span></a></li>
                 <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">设置</span></a></li>
-                <li class="btn btn-inverse"><a title="" href="#"><i class="icon icon-share-alt"></i> <span class="text">退出</span></a></li>
+                <li class="btn btn-inverse"><a title="" href="@Url.Action("Logout","Account", new { area = ""})"><i class="icon icon-share-alt"></i> <span class="text">退出</span></a></li>
             </ul>
         </div>
 

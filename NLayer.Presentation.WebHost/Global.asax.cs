@@ -55,7 +55,7 @@ namespace NLayer.Presentation.WebHost
             routeData.Values["controller"] = "Home";
             routeData.Values["action"] = "Error";
 
-            var controller = new HomeController {ViewData = {Model = errorModel}};
+            var controller = new HomeController { ViewData = { Model = errorModel } };
             controller.ViewBag.StatusCode = (HttpStatusCode) httpStatusCode;
             //通过代码路由到指定的路径  
             ((IController) controller).Execute(new RequestContext(new HttpContextWrapper(httpContext), routeData));

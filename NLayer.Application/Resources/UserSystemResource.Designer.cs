@@ -70,11 +70,29 @@ namespace NLayer.Application.Resources {
         }
         
         /// <summary>
+        ///   查找类似 登陆名不能为空 的本地化字符串。
+        /// </summary>
+        internal static string Login_NameEmpty {
+            get {
+                return ResourceManager.GetString("Login_NameEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 登陆名不存在 的本地化字符串。
         /// </summary>
         internal static string Login_NameNotFound {
             get {
                 return ResourceManager.GetString("Login_NameNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 密码不能为空 的本地化字符串。
+        /// </summary>
+        internal static string Login_PasswordEmpty {
+            get {
+                return ResourceManager.GetString("Login_PasswordEmpty", resourceCulture);
             }
         }
         

@@ -5,11 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using NLayer.Application.UserSystemModule.DTOs;
 using NLayer.Application.UserSystemModule.Services;
+using NLayer.Infrastructure.Authorize;
 using NLayer.Presentation.WebHost.Models;
 using PagedList;
 
 namespace NLayer.Presentation.WebHost.Areas.UserSystem.Controllers
 {
+    [AuthorizeFilter]
     public class RoleController : UserSystemBaseController
     {
         IRoleService _roleService;
@@ -51,6 +53,7 @@ namespace NLayer.Presentation.WebHost.Areas.UserSystem.Controllers
             });
         }
 
+        [Permission("UserSystem:RoleList")]
         public ActionResult RoleList(Guid? groupId, string name)
         {
             return View();

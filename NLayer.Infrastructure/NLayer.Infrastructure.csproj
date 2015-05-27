@@ -44,7 +44,6 @@
     <Compile Include="Entity\IAggregateRoot.cs" />
     <Compile Include="Entity\IdentityGenerator.cs" />
     <Compile Include="Entity\ValueObject.cs" />
-    <Compile Include="Helper\TextHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />

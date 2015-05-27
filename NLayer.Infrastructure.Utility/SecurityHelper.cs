@@ -1,13 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NLayer.Infrastructure.Utility.Helper;
 
 namespace NLayer.Infrastructure.Utility
 {
     public static class SecurityHelper
     {
+        private static string AuthSecret
+        {
+            get
+            {
+                var authSecret = ConfigurationManager.AppSettings["NLayer:AuthSecret"];
+                if (authSecret.IsNullOrBlank())
+                {
+                    throw new ConfigurationErrorsException("missing \"NLayer:AuthSecret\" appSetting.");
+                }
+                return authSecret;
+            }
+        }
+
         public static int GetRandomSeed()
         {
             var bytes = new byte[4];
@@ -49,5 +64,12 @@ namespace NLayer.Infrastructure.Utility
             return nextString;
         }
 
+        public static string EncryptPassword(string password)
+        {
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(password + "_" + AuthSecret);
+            byte[] sha1Bytes = System.Security.Cryptography.SHA1.Create().ComputeHash(bytes);
+            string secretPart = BitConverter.ToString(sha1Bytes).Replace("-", string.Empty);
+            return secretPart;
+        }
     }
 }

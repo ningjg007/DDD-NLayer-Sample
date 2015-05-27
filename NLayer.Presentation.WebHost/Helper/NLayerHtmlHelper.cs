@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using NLayer.Application.Modules;
-using NLayer.Infrastructure.Helper;
+using NLayer.Infrastructure.Utility.Helper;
 
 namespace NLayer.Presentation.WebHost
 {

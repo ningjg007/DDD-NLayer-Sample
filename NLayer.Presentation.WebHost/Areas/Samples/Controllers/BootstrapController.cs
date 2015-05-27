@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NLayer.Infrastructure.Authorize;
+using NLayer.Presentation.WebHost.Controllers;
 
 namespace NLayer.Presentation.WebHost.Areas.Samples.Controllers
 {
-    public class BootstrapController : Controller
+    public class BootstrapController : BaseAuthorizeController
     {
-        // GET: Samples/Bootstrap
+        protected override void CheckLogin()
+        {
+            //base.CheckoutLogin();
+        }
+
         public ActionResult Index()
         {
             return View();

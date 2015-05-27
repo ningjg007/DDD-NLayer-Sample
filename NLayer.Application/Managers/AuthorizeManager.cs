@@ -7,10 +7,10 @@ using NLayer.Application.UserSystemModule.DTOs;
 using NLayer.Application.UserSystemModule.Services;
 using NLayer.Infrastructure.Authorize;
 using NLayer.Infrastructure.Authorize.AuthObject;
-using NLayer.Infrastructure.Helper;
 using NLayer.Infrastructure.Utility.Caching;
+using NLayer.Infrastructure.Utility.Helper;
 
-namespace NLayer.Presentation.WebHost.Managers
+namespace NLayer.Application.Managers
 {
     public class AuthorizeManager : IAuthorizeManager
     {
@@ -44,6 +44,10 @@ namespace NLayer.Presentation.WebHost.Managers
 
             string hashTicket = FormsAuthentication.Encrypt(ticket);
             var userCookie = new HttpCookie(FormsAuthentication.FormsCookieName, hashTicket) { Domain = FormsAuthentication.CookieDomain };
+            if (rememberMe)
+            {
+                userCookie.Expires = expiration;
+            }
 
             HttpContext.Current.Response.Cookies.Set(userCookie);
         }
@@ -72,25 +76,26 @@ namespace NLayer.Presentation.WebHost.Managers
         {
             var authUser = CacheManager.Get<UserForAuthorize>(GetTokenKey(token));
 
-            if (authUser == null)
+            var datas = token.Split('_');
+            var loginToken = string.Empty;
+            if (datas.Length == 2)
             {
-                // 尝试从数据库读取
-                var datas = token.Split('_');
-                if (datas.Length == 2)
+                var userId = Guid.Parse(datas[0]);
+                loginToken = datas[1];
+                if (authUser == null)
                 {
-                    var userId = Guid.Parse(datas[0]);
-                    var loginToken = datas[1];
+                    // 尝试从数据库读取
                     var user = AuthService.FindByLoginToken(userId, loginToken);
                     if (user != null)
                     {
                         authUser = GetAuthUserFromDb(user);
                         // 写入到缓存
-
+                        SetCacheAuthUser(token, authUser);
                     }
                 }
             }
 
-            if (authUser == null || !AuthService.ValidateLoginToken(authUser.UserId, token))
+            if (authUser == null || !AuthService.ValidateLoginToken(authUser.UserId, loginToken))
             {
                 return null;
             }
@@ -180,6 +185,11 @@ namespace NLayer.Presentation.WebHost.Managers
             {
                 return;
             }
+        }
+
+        public void RedirectToLoginPage()
+        {
+            FormsAuthentication.RedirectToLoginPage();
         }
 
         public bool ValidatePermission(string permissionCode, bool throwExceptionIfNotPass = true)

@@ -23,6 +23,8 @@ namespace NLayer.IocModules
 
             builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerRequest();
             builder.RegisterType<UserService>().As<IUserService>();
+
+            builder.RegisterType<AuthService>().As<IAuthService>();
         }
     }
 }
