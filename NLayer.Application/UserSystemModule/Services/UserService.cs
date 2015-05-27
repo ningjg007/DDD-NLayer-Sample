@@ -101,6 +101,11 @@ namespace NLayer.Application.UserSystemModule.Services
                 // Not Exists
             }
         }
+        public UserDTO FindBy(Guid id)
+        {
+            return _Repository.Get(id).ToDto();
+        }
+
 
         public IPagedList<UserDTO> FindBy(string name, int pageNumber, int pageSize)
         {

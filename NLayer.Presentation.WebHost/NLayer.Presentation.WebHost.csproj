@@ -161,6 +161,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Samples\Controllers\BootstrapController.cs" />
     <Compile Include="Areas\Samples\SamplesAreaRegistration.cs" />
+    <Compile Include="Areas\UserSystem\Controllers\MenuController.cs" />
+    <Compile Include="Areas\UserSystem\Controllers\UserController.cs" />
     <Compile Include="Areas\UserSystem\UserSystemBaseController.cs" />
     <Compile Include="Areas\UserSystem\Controllers\RoleController.cs" />
     <Compile Include="Areas\UserSystem\UserSystemAreaRegistration.cs" />
@@ -365,6 +367,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Areas\UserSystem\Views\Menu\EditMenu.cshtml" />
+    <Content Include="Areas\UserSystem\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\UserSystem\Views\User\EditUser.cshtml" />
+    <Content Include="Areas\UserSystem\Views\User\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -12,6 +12,8 @@ namespace NLayer.Application.UserSystemModule.Services
 
         void Remove(Guid id);
 
+        MenuDTO FindBy(Guid id);
+
         IPagedList<MenuDTO> FindBy(string module, string name, int pageNumber, int pageSize);
     }
 }
