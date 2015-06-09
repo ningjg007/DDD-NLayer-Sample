@@ -6,6 +6,7 @@ using NLayer.Application.Resources;
 using NLayer.Application.UserSystemModule.Converters;
 using NLayer.Application.UserSystemModule.DTOs;
 using NLayer.Domain.UserSystemModule.Aggregates.RoleAgg;
+using NLayer.Domain.UserSystemModule.Aggregates.RoleGroupAgg;
 using NLayer.Infrastructure.Entity;
 using NLayer.Infrastructure.Utility.Helper;
 using PagedList;
@@ -15,15 +16,17 @@ namespace NLayer.Application.UserSystemModule.Services
     public class RoleService : IRoleService
     {
         IRoleRepository _Repository;
+        IRoleGroupRepository _RoleGroupRepository;
 
         #region Constructors
 
-        public RoleService(IRoleRepository repository)                               
+        public RoleService(IRoleRepository repository, IRoleGroupRepository _roleGroupRepository)                               
         {
             if (repository == null)
                 throw new ArgumentNullException("repository");
 
             _Repository = repository;
+            _RoleGroupRepository = _roleGroupRepository;
         }
 
         #endregion
@@ -33,6 +36,13 @@ namespace NLayer.Application.UserSystemModule.Services
             var role = roleDTO.ToModel();
             role.Id = IdentityGenerator.NewSequentialGuid();
             role.Created = DateTime.UtcNow;
+
+            var group = _RoleGroupRepository.Get(roleDTO.RoleGroupId);
+            if (group == null)
+            {
+                throw new DataExistsException(UserSystemResource.RoleGroup_NotExists);
+            }
+            role.RoleGroup = group;
 
             if (role.Name.IsNullOrBlank())
             {

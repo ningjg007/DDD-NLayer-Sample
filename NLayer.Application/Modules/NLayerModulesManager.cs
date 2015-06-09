@@ -32,15 +32,28 @@ namespace NLayer.Application.Modules
             Init();
         }
 
+        private static NLayerModulesManager _Instance;
         public static NLayerModulesManager Instance
         {
-            get
-            {
-                return new NLayerModulesManager();
-            }
+            get { return _Instance ?? (_Instance = new NLayerModulesManager()); }
         }
 
-        public static List<NLayerModules> ListAll()
+        public string GetModulesName(string typeStr)
+        {
+            NLayerModulesType type;
+            if (Enum.TryParse(typeStr, true, out type))
+            {
+                var m = _modules.FirstOrDefault(x => x.Type == type);
+                if (m != null)
+                {
+                    return m.Name;
+                }
+            }
+
+            return string.Empty;
+        }
+
+        public List<NLayerModules> ListAll()
         {
             return _modules;
         }

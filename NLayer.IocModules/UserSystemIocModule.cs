@@ -13,6 +13,7 @@ namespace NLayer.IocModules
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<MenuRepository>().As<IMenuRepository>().InstancePerRequest();
+            builder.RegisterType<PermissionRepository>().As<IPermissionRepository>().InstancePerRequest();
             builder.RegisterType<MenuService>().As<IMenuService>();
 
             builder.RegisterType<RoleRepository>().As<IRoleRepository>().InstancePerRequest();

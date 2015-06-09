@@ -1,4 +1,5 @@
-﻿@using PagedList.Mvc
+﻿@using NLayer.Application.Modules
+@using PagedList.Mvc
 @model PagedList.IPagedList<NLayer.Application.UserSystemModule.DTOs.MenuDTO>
     @{
         ViewBag.Title = "菜单管理";
@@ -7,7 +8,7 @@
 
 
     <div id="content-header">
-        <h1>首页 - 菜单管理 </h1>
+        <h1>菜单管理</h1>
     </div>
     <div id="breadcrumb">
         <a href="@Url.Action("Index", "Home", new { area = "" }, null)" title="返回首页" class="tip-bottom"><i class="icon-home"></i> 首页</a>
@@ -36,6 +37,8 @@
                                     <th>菜单链接</th>
                                     <th>模块</th>
                                     <th>排序</th>
+                                    <th>添加时间</th>
+                                    <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,11 +48,11 @@
                                         <td>@item.Name</td>
                                         <td>@item.Code</td>
                                         <td>@item.Url</td>
-                                        <td>@item.Module</td>
+                                        <td>@NLayerModulesManager.Instance.GetModulesName(item.Module)</td>
                                         <td>@item.SortOrder</td>
                                         <td>@item.Created.Display()</td>
                                         <td>
-                                            <a href="@Url.Action("MenuList", new { id = @item.Id })"><i class="icon-list"></i>菜单</a>
+                                            <a href="@Url.Action("MenuPermissionList", new { menuId = @item.Id })"><i class="icon-list"></i>权限</a>
                                             <a href="@Url.Action("EditMenu", new { id = @item.Id })"><i class="icon-edit"></i>编辑</a>
                                             <a href="@Url.Action("RemoveMenu", new { id = @item.Id })" class="ajax-remove" data-name="@item.Name"><i class="icon-remove"></i>删除</a>
                                         </td>

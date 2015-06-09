@@ -14,10 +14,8 @@ namespace NLayer.Application.UserSystemModule.Converters
             Mapper.CreateMap<MenuDTO, Menu>()
                 .ForMember(x => x.Permissions, opt => opt.MapFrom(s => s.Permissions.Select(x => x.ToModel()).ToList()));
 
-            Mapper.CreateMap<Permission, PermissionDTO>()
-                .ForMember(x => x.Menu, opt => opt.MapFrom(s => s.Menu.ToDto()));
-            Mapper.CreateMap<PermissionDTO, Permission>()
-                .ForMember(x => x.Menu, opt => opt.MapFrom(s => s.Menu.ToModel()));
+            Mapper.CreateMap<Permission, PermissionDTO>();
+            Mapper.CreateMap<PermissionDTO, Permission>();
         }
 
         public static Menu ToModel(this MenuDTO dto)

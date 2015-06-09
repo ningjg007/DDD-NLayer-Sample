@@ -19,7 +19,7 @@ namespace NLayer.Repository.UserSystemModule.Repositories
         {
             IQueryable<Role> entities = Table;
 
-            if (roleGroupId != Guid.Empty )
+            if (roleGroupId != Guid.Empty)
             {
                 entities =
                     entities.Where(x => x.RoleGroup.Id == roleGroupId);

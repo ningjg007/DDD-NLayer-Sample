@@ -138,6 +138,9 @@
   <data name="Menu_Exists" xml:space="preserve">
     <value>菜单已存在</value>
   </data>
+  <data name="Menu_ModuleEmpty" xml:space="preserve">
+    <value>模块不能为空</value>
+  </data>
   <data name="Menu_NotExists" xml:space="preserve">
     <value>菜单不存在</value>
   </data>

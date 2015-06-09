@@ -1,10 +1,11 @@
 ﻿@{
     ViewBag.Title = "菜单管理";
-    var groupName = ViewBag.MenuName;
+    var menuName = ViewBag.MenuName;
 }
+@using NLayer.Application.Modules
 @model NLayer.Application.UserSystemModule.DTOs.MenuDTO
 <div id="content-header">
-    <h1>首页 - 菜单管理</h1>
+    <h1>菜单管理</h1>
 </div>
 <div id="breadcrumb">
     <a href="@Url.Action("Index", "Home", new { area = "" }, null)" title="返回首页" class="tip-bottom"><i class="icon-home"></i> 首页</a>
@@ -45,19 +46,13 @@
                         <div class="control-group">
                             <label class="control-label">模块</label>
                             <div class="controls">
-                                @Html.TextBoxFor(x => x.Module, new { placeholder = "菜单模块" })
+                                @Html.DropDownListFor(x=>x.Module, NLayerModulesManager.Instance.ListAll().GetItemList("未选择"))
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">排序</label>
                             <div class="controls">
                                 @Html.TextBoxFor(x => x.SortOrder, new { placeholder = "排序" })
-                            </div>
-                        </div>
-                         <div class="control-group" style="display:none">
-                            <label class="control-label">权限</label>
-                            <div class="controls">
-                                @Html.TextBoxFor(x => x.Permissions, new { placeholder = "权限" })
                             </div>
                         </div>
 

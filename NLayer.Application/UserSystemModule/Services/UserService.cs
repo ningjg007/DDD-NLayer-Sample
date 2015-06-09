@@ -32,6 +32,7 @@ namespace NLayer.Application.UserSystemModule.Services
             var user = userDTO.ToModel();
             user.Id = IdentityGenerator.NewSequentialGuid();
             user.Created = DateTime.UtcNow;
+            user.LastLogin = Const.SqlServerNullDateTime;
 
             if (user.Name.IsNullOrBlank())
             {

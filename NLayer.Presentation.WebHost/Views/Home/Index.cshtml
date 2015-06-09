@@ -27,7 +27,7 @@
                         <label>@NLayerModulesType.UserSystem.Display()</label>
                     </p>
                     <p>
-                        @Html.DropDownList("module", NLayerModulesManager.ListAll().GetItemList("未选择", NLayerModulesType.UserSystem.ToString()))
+                        @Html.DropDownList("module", NLayerModulesManager.Instance.ListAll().GetItemList("未选择", NLayerModulesType.UserSystem.ToString()))
                     </p>
                 </div>
             </div>

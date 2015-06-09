@@ -1,0 +1,62 @@
+﻿@using NLayer.Application.Modules
+@using PagedList.Mvc
+@model List<NLayer.Application.UserSystemModule.DTOs.PermissionDTO>
+    @{
+        ViewBag.Title = "菜单管理";
+        var menuName = ViewBag.MenuName;
+        var menuId = ViewBag.MenuId;
+    }
+
+
+    <div id="content-header">
+        <h1>菜单权限</h1>
+    </div>
+    <div id="breadcrumb">
+        <a href="@Url.Action("Index", "Home", new { area = "" }, null)" title="返回首页" class="tip-bottom"><i class="icon-home"></i> 首页</a>
+        <a href="@Url.Action("Index")">菜单管理</a>
+        <a class="current">@menuName</a>
+    </div>
+    <div class="container-fluid">
+
+        <div class="row-fluid">
+            <div class="span12">
+                @using (Ajax.BeginForm("SearchMenuPermission", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "ajaxRequestSuccess" }, new { @class = "form-inline" }))
+                {
+                    <section>
+                        <a href="@Url.Action("EditMenuPermission", new { menuId = @menuId })" class="btn btn-success" id="addnew">新增菜单权限</a>
+                    </section>
+                }
+                <div class="widget-box">
+                    <div class="widget-content nopadding">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>权限名称</th>
+                                    <th>权限代码</th>
+                                    <th>排序</th>
+                                    <th>添加时间</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Name</td>
+                                        <td>@item.Code</td>
+                                        <td>@item.SortOrder</td>
+                                        <td>@item.Created.Display()</td>
+                                        <td>
+                                            <a href="@Url.Action("EditMenuPermission", new { menuId = @menuId, id = @item.Id })"><i class="icon-edit"></i>编辑</a>
+                                            <a href="@Url.Action("RemoveMenuPermission", new { menuId = @menuId, id = @item.Id })" class="ajax-remove" data-name="@item.Name"><i class="icon-remove"></i>删除</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

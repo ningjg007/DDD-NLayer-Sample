@@ -124,6 +124,15 @@ namespace NLayer.Application.Resources {
         }
         
         /// <summary>
+        ///   查找类似 模块不能为空 的本地化字符串。
+        /// </summary>
+        internal static string Menu_ModuleEmpty {
+            get {
+                return ResourceManager.GetString("Menu_ModuleEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 菜单不存在 的本地化字符串。
         /// </summary>
         internal static string Menu_NotExists {

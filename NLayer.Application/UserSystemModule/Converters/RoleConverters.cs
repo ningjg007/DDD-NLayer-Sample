@@ -9,6 +9,7 @@ namespace NLayer.Application.UserSystemModule.Converters
         public static void InitRoleMappers()
         {
             Mapper.CreateMap<Role, RoleDTO>();
+
             Mapper.CreateMap<RoleDTO, Role>();
         }
 

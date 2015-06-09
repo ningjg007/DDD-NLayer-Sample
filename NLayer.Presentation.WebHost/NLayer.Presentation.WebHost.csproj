@@ -281,7 +281,9 @@
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Scripts\common.js" />
     <Content Include="Scripts\unicorn.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -371,6 +373,18 @@
     <Content Include="Areas\UserSystem\Views\Menu\Index.cshtml" />
     <Content Include="Areas\UserSystem\Views\User\EditUser.cshtml" />
     <Content Include="Areas\UserSystem\Views\User\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\UserSystem\Views\Role\RoleList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\UserSystem\Views\Role\EditRole.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\UserSystem\Views\Menu\MenuPermissionList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\UserSystem\Views\Menu\EditMenuPermission.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

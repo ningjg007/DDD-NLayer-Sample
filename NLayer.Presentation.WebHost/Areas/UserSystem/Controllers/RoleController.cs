@@ -53,16 +53,78 @@ namespace NLayer.Presentation.WebHost.Areas.UserSystem.Controllers
             });
         }
 
-        [Permission("UserSystem:RoleList")]
-        public ActionResult RoleList(Guid? groupId, string name)
+        //[Permission("UserSystem:RoleList")]
+        public ActionResult RoleList(Guid groupId, string name, int? page)
         {
-            return View();
+            var list = _roleService.FindBy(groupId, name, page.HasValue ? page.Value : 1, DisplayExtensions.DefaultPageSize);
+
+            var group = _roleGroupService.FindBy(groupId);
+
+            ViewBag.GroupName = group == null ? string.Empty : group.Name;
+            ViewBag.GroupId = groupId;
+            ViewBag.Name = name;
+
+            return View(list);
         }
 
-        public ActionResult EditRole(Guid? id)
+        [HttpPost]
+        public ActionResult SearchRoleList(Guid groupId, string name)
+        {
+            return Json(new AjaxResponse
+            {
+                Succeeded = true,
+                ShowMessage = false,
+                RedirectUrl = Url.Action("RoleList", new
+                {
+                    groupId,
+                    name
+                })
+            });
+        }
+
+        public ActionResult EditRole(Guid groupId, Guid? id)
         {
             var role = id.HasValue ? _roleService.FindBy(id.Value) : new RoleDTO();
+
+            var group = _roleGroupService.FindBy(groupId);
+
+            ViewBag.GroupName = group == null ? string.Empty : group.Name;
+            ViewBag.GroupId = groupId;
+
             return View(role);
+        }
+
+        [HttpPost]
+        public ActionResult EditRole(Guid groupId, RoleDTO role)
+        {
+            role.RoleGroupId = groupId;
+            if (role.Id == Guid.Empty)
+            {
+                _roleService.Add(role);
+            }
+            else
+            {
+                _roleService.Update(role);
+            }
+
+            return Json(new AjaxResponse
+            {
+                Succeeded = true,
+                ShowMessage = false,
+                RedirectUrl = Url.Action("RoleList", new { groupId = groupId })
+            });
+        }
+
+        public ActionResult RemoveRole(Guid groupId, Guid id)
+        {
+            _roleService.Remove(id);
+
+            return Json(new AjaxResponse
+            {
+                Succeeded = true,
+                ShowMessage = false,
+                RedirectUrl = Url.Action("RoleList", new { groupId = groupId })
+            }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult EditGroup(Guid? id)

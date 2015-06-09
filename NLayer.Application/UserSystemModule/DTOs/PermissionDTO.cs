@@ -14,7 +14,7 @@ namespace NLayer.Application.UserSystemModule.DTOs
 
         public int SortOrder { get; set; }
 
-        public MenuDTO Menu { get; set; }
+        public Guid MenuId { get; set; }
 
         public DateTime Created { get; set; }
     }

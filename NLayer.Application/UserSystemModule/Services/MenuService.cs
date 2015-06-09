@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using NLayer.Application.Exceptions;
 using NLayer.Application.Resources;
@@ -14,15 +16,17 @@ namespace NLayer.Application.UserSystemModule.Services
     public class MenuService : IMenuService
     {
         IMenuRepository _Repository;
+        IPermissionRepository _PermissionRepository;
 
         #region Constructors
 
-        public MenuService(IMenuRepository repository)                               
+        public MenuService(IMenuRepository repository, IPermissionRepository permissionRepository)                               
         {
             if (repository == null)
                 throw new ArgumentNullException("repository");
 
             _Repository = repository;
+            _PermissionRepository = permissionRepository;
         }
 
         #endregion
@@ -38,9 +42,23 @@ namespace NLayer.Application.UserSystemModule.Services
                 throw new DataExistsException(UserSystemResource.Common_Name_Empty);
             }
 
+            if (menu.Module.IsNullOrBlank())
+            {
+                throw new DataExistsException(UserSystemResource.Menu_ModuleEmpty);
+            }
+
             if (_Repository.Exists(menu))
             {
                 throw new DataExistsException(UserSystemResource.Menu_Exists);
+            }
+
+            foreach (var p in menu.Permissions)
+            {
+                if (p.Id == Guid.Empty)
+                {
+                    p.Id = IdentityGenerator.NewSequentialGuid();
+                    p.Created = DateTime.UtcNow;
+                }
             }
 
             _Repository.Add(menu);
@@ -64,6 +82,11 @@ namespace NLayer.Application.UserSystemModule.Services
                 if (current.Name.IsNullOrBlank())
                 {
                     throw new DataExistsException(UserSystemResource.Common_Name_Empty);
+                }
+
+                if (current.Module.IsNullOrBlank())
+                {
+                    throw new DataExistsException(UserSystemResource.Menu_ModuleEmpty);
                 }
 
                 if (_Repository.Exists(current))
@@ -97,6 +120,40 @@ namespace NLayer.Application.UserSystemModule.Services
             else
             {
                 throw new DataNotFoundException(UserSystemResource.Menu_NotExists);
+            }
+        }
+
+        public void UpdatePermission(MenuDTO menuDTO)
+        {
+            //get persisted item
+            var persisted = _Repository.Get(menuDTO.Id);
+
+            if (persisted != null) //if customer exist
+            {
+
+                foreach (var p in menuDTO.Permissions)
+                {
+                    if (p.Id == Guid.Empty)
+                    {
+                        p.Id = IdentityGenerator.NewSequentialGuid();
+                        p.Created = DateTime.UtcNow;
+                    }
+                }
+
+                foreach (var p in persisted.Permissions.ToArray())
+                {
+                    // 先删除从表数据
+                    _PermissionRepository.Remove(p);
+                }
+                persisted.Permissions = new Collection<Permission>();
+                foreach (var p in menuDTO.Permissions.Select(x => x.ToModel()))
+                {
+                    p.Menu = persisted;
+                    persisted.Permissions.Add(p);
+                }
+
+                //commit unit of work
+                _Repository.UnitOfWork.Commit();
             }
         }
 

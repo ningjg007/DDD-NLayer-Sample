@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NLayer.Application.UserSystemModule.DTOs;
 using PagedList;
 
@@ -11,6 +12,8 @@ namespace NLayer.Application.UserSystemModule.Services
         void Update(MenuDTO menuDTO);
 
         void Remove(Guid id);
+
+        void UpdatePermission(MenuDTO menuDTO);
 
         MenuDTO FindBy(Guid id);
 

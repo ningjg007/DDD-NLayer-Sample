@@ -13,5 +13,7 @@ namespace NLayer.Application.UserSystemModule.DTOs
         public int SortOrder { get; set; }
 
         public DateTime Created { get; set; }
+
+        public Guid RoleGroupId { get; set; }
     }
 }

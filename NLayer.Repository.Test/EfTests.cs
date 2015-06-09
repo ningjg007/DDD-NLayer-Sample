@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using Newtonsoft.Json;
+using NLayer.Domain.UserSystemModule.Aggregates.MenuAgg;
 using NLayer.Domain.UserSystemModule.Aggregates.RoleAgg;
 using NLayer.Domain.UserSystemModule.Aggregates.RoleGroupAgg;
 using NLayer.Infrastructure.Entity;
@@ -99,6 +101,59 @@ namespace NLayer.Repository.Test
                 {
                     unitOfWork.Roles.Remove(item);
                 }
+
+                unitOfWork.DbContext.SaveChanges();
+
+                sw.Stop();
+                timeCost = sw.Elapsed;
+            }
+
+            Console.WriteLine("Elapsed: " + timeCost.Ticks);
+        }
+
+
+
+        [Fact]
+        public void InsertMenuTest()
+        {
+            var sw = new Stopwatch();
+            TimeSpan timeCost;
+
+            using (var unitOfWork = new NLayerUnitOfWork())
+            {
+                sw.Start();
+
+                #region Add
+
+                var menu = new Menu()
+                {
+                    Id = IdentityGenerator.NewSequentialGuid(),
+                    Name = "菜单1",
+                    Code = "menu1",
+                    Created = DateTime.UtcNow
+                };
+
+                menu.Permissions = new Collection<Permission>();
+
+                menu.Permissions.Add(new Permission()
+                {
+                    Id = IdentityGenerator.NewSequentialGuid(),
+                    Name = "权限1",
+                    Code = "Permission1",
+                    Created = DateTime.UtcNow
+                });
+
+                menu.Permissions.Add(new Permission()
+                {
+                    Id = IdentityGenerator.NewSequentialGuid(),
+                    Name = "权限2",
+                    Code = "Permission2",
+                    Created = DateTime.UtcNow
+                });
+
+                unitOfWork.Menus.Add(menu);
+
+                #endregion
 
                 unitOfWork.DbContext.SaveChanges();
 

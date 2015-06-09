@@ -7,7 +7,7 @@
 
 
     <div id="content-header">
-        <h1>首页 - 用户管理 </h1>
+        <h1>用户管理</h1>
     </div>
     <div id="breadcrumb">
         <a href="@Url.Action("Index", "Home", new { area = "" }, null)" title="返回首页" class="tip-bottom"><i class="icon-home"></i> 首页</a>
@@ -47,7 +47,6 @@
                                         <td>@item.Email</td>
                                         <td>@item.Created.Display()</td>
                                         <td>
-                                            <a href="@Url.Action("UserList", new { id = @item.Id })"><i class="icon-list"></i>用户</a>
                                             <a href="@Url.Action("EditUser", new { id = @item.Id })"><i class="icon-edit"></i>编辑</a>
                                             <a href="@Url.Action("RemoveUser", new { id = @item.Id })" class="ajax-remove" data-name="@item.Name"><i class="icon-remove"></i>删除</a>
                                         </td>
