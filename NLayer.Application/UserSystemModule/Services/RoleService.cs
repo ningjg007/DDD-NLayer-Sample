@@ -5,6 +5,7 @@ using NLayer.Application.Exceptions;
 using NLayer.Application.Resources;
 using NLayer.Application.UserSystemModule.Converters;
 using NLayer.Application.UserSystemModule.DTOs;
+using NLayer.Domain.UserSystemModule.Aggregates.MenuAgg;
 using NLayer.Domain.UserSystemModule.Aggregates.RoleAgg;
 using NLayer.Domain.UserSystemModule.Aggregates.RoleGroupAgg;
 using NLayer.Infrastructure.Entity;
@@ -17,16 +18,18 @@ namespace NLayer.Application.UserSystemModule.Services
     {
         IRoleRepository _Repository;
         IRoleGroupRepository _RoleGroupRepository;
+        IPermissionRepository _PermissionRepository;
 
         #region Constructors
 
-        public RoleService(IRoleRepository repository, IRoleGroupRepository _roleGroupRepository)                               
+        public RoleService(IRoleRepository repository, IRoleGroupRepository _roleGroupRepository, IPermissionRepository permissionRepository)                               
         {
             if (repository == null)
                 throw new ArgumentNullException("repository");
 
             _Repository = repository;
             _RoleGroupRepository = _roleGroupRepository;
+            _PermissionRepository = permissionRepository;
         }
 
         #endregion
@@ -130,6 +133,46 @@ namespace NLayer.Application.UserSystemModule.Services
                pageNumber,
                pageSize,
                list.TotalItemCount);
+        }
+
+        public void UpdateRolePermission(Guid id, List<Guid> permissions)
+        {
+            //get persisted item
+            var persisted = _Repository.Get(id);
+
+            if (persisted != null) //if customer exist
+            {
+                var pList = new List<Permission>();
+                foreach (var pid in permissions)
+                {
+                    var p = _PermissionRepository.Get(pid);
+                    if (p != null)
+                    {
+                        pList.Add(p);
+                    }
+                }
+
+                // 删除旧的权限
+                persisted.Permissions.Clear();
+                // 添加新的权限
+                persisted.Permissions = pList;
+
+                //commit unit of work
+                _Repository.UnitOfWork.Commit();
+            }
+        }
+
+        public List<PermissionDTO> GetRolePermission(Guid id)
+        {
+            //get persisted item
+            var persisted = _Repository.Get(id);
+
+            if (persisted != null) //if customer exist
+            {
+                return persisted.Permissions.Select(x => x.ToDto()).ToList();
+            }
+
+            return new List<PermissionDTO>();
         }
     }
 }

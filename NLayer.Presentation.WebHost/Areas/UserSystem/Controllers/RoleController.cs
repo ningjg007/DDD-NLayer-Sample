@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NLayer.Application.Modules;
 using NLayer.Application.UserSystemModule.DTOs;
 using NLayer.Application.UserSystemModule.Services;
 using NLayer.Infrastructure.Authorize;
 using NLayer.Presentation.WebHost.Models;
+using NLayer.Presentation.WebHost.Resources;
 using PagedList;
 
 namespace NLayer.Presentation.WebHost.Areas.UserSystem.Controllers
@@ -18,13 +20,16 @@ namespace NLayer.Presentation.WebHost.Areas.UserSystem.Controllers
 
         IRoleGroupService _roleGroupService;
 
+        IMenuService _menuService;
+
         
         #region Constructor
 
-        public RoleController(IRoleService roleService, IRoleGroupService roleGroupService)
+        public RoleController(IRoleService roleService, IRoleGroupService roleGroupService, IMenuService menuService)
         {
             _roleService = roleService;
             _roleGroupService = roleGroupService;
+            _menuService = menuService;
         }
 
         #endregion
@@ -79,6 +84,57 @@ namespace NLayer.Presentation.WebHost.Areas.UserSystem.Controllers
                     groupId,
                     name
                 })
+            });
+        }
+        public ActionResult EditRolePermission(Guid roleId)
+        {
+            var menus = new List<MenuDTO>();
+
+            var modules = NLayerModulesManager.Instance.ListAll();
+            foreach (var module in modules)
+            {
+                menus.AddRange(_menuService.FindByModule(module.Type.ToString()));
+            }
+
+            var role = _roleService.FindBy(roleId);
+            var roleGroup = _roleGroupService.FindBy(role.RoleGroupId);
+
+            var permissions = _roleService.GetRolePermission(roleId);
+
+            ViewBag.Modules = modules;
+            ViewBag.Menus = menus;
+            ViewBag.Role = role;
+            ViewBag.RoleGroup = roleGroup;
+            ViewBag.Permissions = permissions;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditRolePermission(Guid roleId, List<string> permissions)
+        {
+            var pList = new List<Guid>();
+
+            foreach (var s in permissions)
+            {
+                Guid id;
+                if (Guid.TryParse(s, out id))
+                {
+                    pList.Add(id);
+                }
+            }
+
+            if (pList.Count > 0)
+            {
+                _roleService.UpdateRolePermission(roleId, pList);
+            }
+
+            return Json(new AjaxResponse
+            {
+                Succeeded = true,
+                ShowMessage = true,
+                Message = CommonResource.Msg_Operate_Ok,
+                RedirectUrl = string.Empty
             });
         }
 

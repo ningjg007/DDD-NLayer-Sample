@@ -31,6 +31,19 @@
             $(this).parent().addClass("active");
         }
     });
+
+    $(".chkAll").click(function () {
+        var checked = this.checked;
+        var depth = $(this).attr("depth");
+        var node = $(this);
+        while (depth>0) {
+            node = node.parent();
+            depth--;
+        }
+        $("input[type=checkbox]", node).each(function() {
+            $(this).attr("checked", checked);
+        });
+    });
 });
 
 function ajaxRequestSuccess(resp) {

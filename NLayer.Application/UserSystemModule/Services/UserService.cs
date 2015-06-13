@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NLayer.Application.Exceptions;
 using NLayer.Application.Resources;
 using NLayer.Application.UserSystemModule.Converters;
 using NLayer.Application.UserSystemModule.DTOs;
+using NLayer.Domain.UserSystemModule.Aggregates.MenuAgg;
 using NLayer.Domain.UserSystemModule.Aggregates.UserAgg;
 using NLayer.Infrastructure.Entity;
 using NLayer.Infrastructure.Utility.Helper;
@@ -14,15 +16,17 @@ namespace NLayer.Application.UserSystemModule.Services
     public class UserService : IUserService
     {
         IUserRepository _Repository;
+        IPermissionRepository _PermissionRepository;
 
         #region Constructors
 
-        public UserService(IUserRepository repository)                               
+        public UserService(IUserRepository repository, IPermissionRepository permissionRepository)                               
         {
             if (repository == null)
                 throw new ArgumentNullException("repository");
 
             _Repository = repository;
+            _PermissionRepository = permissionRepository;
         }
 
         #endregion
@@ -116,6 +120,46 @@ namespace NLayer.Application.UserSystemModule.Services
                pageNumber,
                pageSize,
                list.TotalItemCount);
+        }
+
+        public void UpdateUserPermission(Guid id, List<Guid> permissions)
+        {
+            //get persisted item
+            var persisted = _Repository.Get(id);
+
+            if (persisted != null) //if customer exist
+            {
+                var pList = new List<Permission>();
+                foreach (var pid in permissions)
+                {
+                    var p = _PermissionRepository.Get(pid);
+                    if (p != null)
+                    {
+                        pList.Add(p);
+                    }
+                }
+
+                // 删除旧的权限
+                persisted.Permissions.Clear();
+                // 添加新的权限
+                persisted.Permissions = pList;
+
+                //commit unit of work
+                _Repository.UnitOfWork.Commit();
+            }
+        }
+
+        public List<PermissionDTO> GetUserPermission(Guid id)
+        {
+            //get persisted item
+            var persisted = _Repository.Get(id);
+
+            if (persisted != null) //if customer exist
+            {
+                return persisted.Permissions.Select(x => x.ToDto()).ToList();
+            }
+
+            return new List<PermissionDTO>();
         }
     }
 }

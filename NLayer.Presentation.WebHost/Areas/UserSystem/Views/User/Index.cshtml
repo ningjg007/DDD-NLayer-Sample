@@ -47,6 +47,7 @@
                                         <td>@item.Email</td>
                                         <td>@item.Created.Display()</td>
                                         <td>
+                                            <a href="@Url.Action("EditUserPermission", new { userId = @item.Id })"><i class="icon-list"></i>权限</a>
                                             <a href="@Url.Action("EditUser", new { id = @item.Id })"><i class="icon-edit"></i>编辑</a>
                                             <a href="@Url.Action("RemoveUser", new { id = @item.Id })" class="ajax-remove" data-name="@item.Name"><i class="icon-remove"></i>删除</a>
                                         </td>

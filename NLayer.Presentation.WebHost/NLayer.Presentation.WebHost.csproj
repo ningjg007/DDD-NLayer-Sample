@@ -178,6 +178,11 @@
     <Compile Include="Helper\NLayerHtmlHelper.cs" />
     <Compile Include="Models\AjaxResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\CommonResource.Designer.cs">
+      <DependentUpon>CommonResource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Config\autofac.xml" />
@@ -385,6 +390,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\UserSystem\Views\Menu\EditMenuPermission.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\UserSystem\Views\User\EditUserPermission.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\CommonResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommonResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\UserSystem\Views\Role\EditRolePermission.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

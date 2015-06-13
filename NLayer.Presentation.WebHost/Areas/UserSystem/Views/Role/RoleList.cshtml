@@ -51,7 +51,7 @@
                                     <td>@item.SortOrder</td>
                                     <td>@item.Created.Display()</td>
                                     <td>
-                                        <a href="@Url.Action("RolePermissionList", new { roleId = @item.Id })"><i class="icon-list"></i>权限</a>
+                                        <a href="@Url.Action("EditRolePermission", new { roleId = @item.Id })"><i class="icon-list"></i>权限</a>
                                         <a href="@Url.Action("EditRole", new { groupId = @groupId, id = @item.Id })"><i class="icon-edit"></i>编辑</a>
                                         <a href="@Url.Action("RemoveRole", new { groupId = @groupId, id = @item.Id })" class="ajax-remove" data-name="@item.Name"><i class="icon-remove"></i>删除</a>
                                     </td>

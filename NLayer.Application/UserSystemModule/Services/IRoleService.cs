@@ -18,5 +18,9 @@ namespace NLayer.Application.UserSystemModule.Services
         RoleDTO FindBy(Guid id);
 
         IPagedList<RoleDTO> FindBy(Guid roleGroupId, string name, int pageNumber, int pageSize);
+
+        void UpdateRolePermission(Guid id, List<Guid> permissions);
+
+        List<PermissionDTO> GetRolePermission(Guid id);
     }
 }

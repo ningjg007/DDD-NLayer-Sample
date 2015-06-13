@@ -78,18 +78,20 @@ namespace NLayer.Presentation.WebHost.Areas.UserSystem.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditMenuPermission(Guid menuId, PermissionDTO permission)
+        public ActionResult EditMenuPermission(Guid menuId, PermissionDTO permission, Guid? id)
         {
             var menu = _menuService.FindBy(menuId) ?? new MenuDTO();
-            if (permission.Id == Guid.Empty)
+            if (!id.HasValue)
             {
                 menu.Permissions.Add(permission);
             }
             else
             {
+                permission.Id = id.Value;
                 var oldPermission = menu.Permissions.FirstOrDefault(x => x.Id == permission.Id);
                 if (oldPermission != null)
                 {
+                    permission.Created = oldPermission.Created;
                     menu.Permissions.Remove(oldPermission);
                 }
                 menu.Permissions.Add(permission);

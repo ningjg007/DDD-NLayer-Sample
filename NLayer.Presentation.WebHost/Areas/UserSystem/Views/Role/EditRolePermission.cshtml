@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "用户的权限";
+    var modules = ViewBag.Modules as List<NLayerModules>;
+    var role = ViewBag.Role as RoleDTO;
+    var roleGroup = ViewBag.RoleGroup as RoleGroupDTO;
+    var menus = ViewBag.Menus as List<MenuDTO>;
+    var existsPermissions = ViewBag.Permissions as List<PermissionDTO>;
+}
+@using NLayer.Application.Modules
+@using NLayer.Application.UserSystemModule.DTOs
+@using NLayer.Infrastructure.Utility.Helper
+@using PagedList
+<div id="content-header">
+    <h1>角色的权限</h1>
+</div>
+<div id="breadcrumb">
+    <a href="@Url.Action("Index", "Home", new { area = "" }, null)" title="返回首页" class="tip-bottom"><i class="icon-home"></i> 首页</a>
+    <a href="@Url.Action("Index")">角色管理</a>
+    <a href="@Url.Action("RoleList", new{groupId = @role.RoleGroupId})">@roleGroup.Name 角色组</a>
+    <a class="current">@role.Name 角色的权限</a>
+</div>
+<div class="container-fluid">
+
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon">
+                        <i class="icon-align-justify"></i>
+                    </span>
+                    <h5>角色 @role.Name 的权限</h5>
+                    <div class="pull-right" style="padding:8px 15px;"><label>@Html.CheckBox("chkAll", new { value = "", @class = "chkAll", depth = "4" })全选</label></div>
+                </div>
+                <div class="widget-content">
+                    @using (Ajax.BeginForm("EditRolePermission", new { roleId = role.Id }, new AjaxOptions { HttpMethod = "Post", OnSuccess = "ajaxRequestSuccess" }, new { @class = "form-horizontal" }))
+                    {
+                        foreach (var mod in modules)
+                        {
+                            <hr />
+                            <div>
+                                <h4>@mod.Name<label class="pull-right">@Html.CheckBox("chkAll", new { value = "", @class = "chkAll", depth = "3" })全选</label></h4>
+                                @foreach (var m in menus.Where(x => x.Module.EqualsIgnoreCase(@mod.Type.ToString())))
+                                {
+                                    <div class="control-group">
+                                        <label class="control-label">
+                                            <span class="badge badge-info" title="@m.Code">@m.Name</span>
+                                            <br />
+                                        </label>
+                                        <div class="controls">
+                                            @if (m.Permissions.Count > 0)
+                                            {
+                                                var permissions = m.Permissions.ToList();
+                                                permissions.Insert(0, new PermissionDTO()
+                                                {
+                                                    Code = "",
+                                                    Name = "全选"
+                                                });
+                                                var pageIndex = 1;
+                                                const int pageSize = 5;
+                                                StaticPagedList<PermissionDTO> list;
+                                                do
+                                                {
+                                                    list = new StaticPagedList<PermissionDTO>
+                                                        (permissions.Skip((pageIndex - 1) * pageSize).Take(pageSize), pageIndex++, pageSize, permissions.Count);
+                                                    <div class="clearfix">
+                                                        @foreach (var p in list)
+                                                        {
+                                                            var existP = existsPermissions.FirstOrDefault(x => x.Id == p.Id);
+                                                            <div class="span2">
+                                                                @if (p.Name == "全选")
+                                                                {
+                                                                    <label>@Html.CheckBox("chkAll", new { value = "", @class = "chkAll", depth = (permissions.Count > pageSize) ? "4" : "3" })全选</label>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <label title="@p.Code">
+                                                                        @Html.CheckBox("permissions", existP != null, new { value = p.Id })
+                                                                        @p.Name
+                                                                    </label>
+                                                                }
+                                                            </div>
+                                                        }
+                                                    </div>
+
+                                                } while (list.HasNextPage);
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

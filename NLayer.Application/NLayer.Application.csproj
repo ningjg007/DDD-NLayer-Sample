@@ -60,6 +60,11 @@
     <Compile Include="Managers\AuthorizeManager.cs" />
     <Compile Include="Modules\NLayerModules.cs" />
     <Compile Include="Modules\NLayerModulesManager.cs" />
+    <Compile Include="Resources\CommonResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommonResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\ModulesResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -94,6 +99,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\CommonResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommonResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\ModulesResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ModulesResource.Designer.cs</LastGenOutput>

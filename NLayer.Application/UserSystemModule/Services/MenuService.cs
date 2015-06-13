@@ -161,14 +161,21 @@ namespace NLayer.Application.UserSystemModule.Services
         {
             return _Repository.Get(id).ToDto();
         }
+
         public IPagedList<MenuDTO> FindBy(string module, string name, int pageNumber, int pageSize)
         {
             var list = _Repository.FindBy(module, name, pageNumber, pageSize);
             return new StaticPagedList<MenuDTO>(
-               list.ToList().Select(x=>x.ToDto()),
-               pageNumber,
-               pageSize,
-               list.TotalItemCount);
+                list.ToList().Select(x => x.ToDto()),
+                pageNumber,
+                pageSize,
+                list.TotalItemCount);
+        }
+
+        public List<MenuDTO> FindByModule(string module)
+        {
+            var list = _Repository.Collection.Where(x => x.Module.Equals(module)).ToList();
+            return list.Select(x => x.ToDto()).ToList();
         }
     }
 }
