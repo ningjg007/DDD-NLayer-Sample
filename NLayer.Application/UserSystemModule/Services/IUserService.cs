@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using NLayer.Application.CommonModule.DTOs;
 using NLayer.Application.UserSystemModule.DTOs;
 using PagedList;
 
@@ -20,5 +21,7 @@ namespace NLayer.Application.UserSystemModule.Services
         void UpdateUserPermission(Guid id, List<Guid> permissions);
 
         List<PermissionDTO> GetUserPermission(Guid id);
+
+        List<IdNameDTO> GetAllUsersIdName();
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using NLayer.Domain.UserSystemModule.Aggregates.RoleAgg;
+using NLayer.Domain.UserSystemModule.Aggregates.UserAgg;
 using NLayer.Infrastructure.Entity;
 
 namespace NLayer.Domain.UserSystemModule.Aggregates.RoleGroupAgg
@@ -21,5 +22,7 @@ namespace NLayer.Domain.UserSystemModule.Aggregates.RoleGroupAgg
         public DateTime Created { get; set; }
 
         public virtual ICollection<Role> Roles { get; set; }
+
+        public virtual ICollection<User> Users { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using NLayer.Application.CommonModule.DTOs;
 using NLayer.Application.Exceptions;
 using NLayer.Application.Resources;
 using NLayer.Application.UserSystemModule.Converters;
@@ -73,9 +74,24 @@ namespace NLayer.Application.UserSystemModule.Services
                     throw new DataExistsException(UserSystemResource.Common_Name_Empty);
                 }
 
+                if (current.Email.IsNullOrBlank())
+                {
+                    throw new DataExistsException(UserSystemResource.Common_Email_Empty);
+                }
+
                 if (_Repository.Exists(current))
                 {
                     throw new DataExistsException(UserSystemResource.User_Exists);
+                }
+
+                if (_Repository.ExistsLoginName(current))
+                {
+                    throw new DataExistsException(string.Format(UserSystemResource.LoginName_Exists, current.LoginName));
+                }
+
+                if (_Repository.ExistsEmail(current))
+                {
+                    throw new DataExistsException(string.Format(UserSystemResource.Email_Exists, current.Email));
                 }
 
                 //Merge changes
@@ -160,6 +176,15 @@ namespace NLayer.Application.UserSystemModule.Services
             }
 
             return new List<PermissionDTO>();
+        }
+
+        public List<IdNameDTO> GetAllUsersIdName()
+        {
+            return _Repository.Collection.Select(x => new IdNameDTO()
+            {
+                Id = x.Id,
+                Name = x.Name
+            }).ToList();
         }
     }
 }

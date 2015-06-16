@@ -48,6 +48,7 @@
                                     <td>@item.Created.Display()</td>
                                     <td>
                                         <a href="@Url.Action("RoleList", new { groupId = @item.Id })"><i class="icon-list"></i>角色</a>
+                                        <a href="@Url.Action("EditUserList", new { groupId = @item.Id })"><i class="icon-list"></i>用户</a>
                                         <a href="@Url.Action("EditGroup", new { id = @item.Id })"><i class="icon-edit"></i>编辑</a>
                                         <a href="@Url.Action("RemoveGroup", new { id = @item.Id })" class="ajax-remove" data-name="@item.Name"><i class="icon-remove"></i>删除</a>
                                     </td>

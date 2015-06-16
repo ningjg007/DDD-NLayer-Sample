@@ -162,7 +162,9 @@ namespace NLayer.Application.UserSystemModule.Services
 
             var permissions = new List<PermissionForAuthDTO>();
 
-            foreach (var role in user.Roles.Where(role => role.Permissions != null))
+            var roles = user.Groups.Where(g => g.Roles != null).SelectMany(x => x.Roles);
+
+            foreach (var role in roles.Where(role => role.Permissions != null))
             {
                 permissions.AddRange(role.Permissions.Select(x=>new PermissionForAuthDTO()
                 {

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using NLayer.Application.CommonModule.DTOs;
 using NLayer.Application.Exceptions;
 using NLayer.Application.Resources;
 using NLayer.Application.UserSystemModule.Converters;
 using NLayer.Application.UserSystemModule.DTOs;
 using NLayer.Domain.UserSystemModule.Aggregates.RoleGroupAgg;
+using NLayer.Domain.UserSystemModule.Aggregates.UserAgg;
 using NLayer.Infrastructure.Entity;
 using NLayer.Infrastructure.Utility.Helper;
 using PagedList;
@@ -15,15 +17,17 @@ namespace NLayer.Application.UserSystemModule.Services
     public class RoleGroupService : IRoleGroupService
     {
         IRoleGroupRepository _Repository;
+        IUserRepository _UserRepository;
 
         #region Constructors
 
-        public RoleGroupService(IRoleGroupRepository repository)                               
+        public RoleGroupService(IRoleGroupRepository repository,IUserRepository userRepository)                               
         {
             if (repository == null)
                 throw new ArgumentNullException("repository");
 
             _Repository = repository;
+            _UserRepository = userRepository;
         }
 
         #endregion
@@ -120,6 +124,50 @@ namespace NLayer.Application.UserSystemModule.Services
                pageNumber,
                pageSize,
                list.TotalItemCount);
+        }
+
+        public List<IdNameDTO> GetUsersIdName(Guid groupId)
+        {
+            var group = _Repository.Get(groupId);
+
+            if (group == null)
+            {
+                throw new DataNotFoundException(UserSystemResource.RoleGroup_NotExists);
+            }
+
+            var result = group.Users.Select(x => new IdNameDTO()
+            {
+                Id = x.Id,
+                Name = x.Name
+            }).ToList();
+
+            return result;
+        }
+        public void UpdateGroupUsers(Guid id, List<Guid> users)
+        {
+            //get persisted item
+            var persisted = _Repository.Get(id);
+
+            if (persisted != null) //if customer exist
+            {
+                var pList = new List<User>();
+                foreach (var uid in users)
+                {
+                    var p = _UserRepository.Get(uid);
+                    if (p != null)
+                    {
+                        pList.Add(p);
+                    }
+                }
+
+                // 删除旧的用户
+                persisted.Users.Clear();
+                // 添加新的用户
+                persisted.Users = pList;
+
+                //commit unit of work
+                _Repository.UnitOfWork.Commit();
+            }
         }
     }
 }

@@ -187,6 +187,8 @@
   <ItemGroup>
     <Content Include="App_Data\Config\autofac.xml" />
     <Content Include="App_Data\Config\log4net.xml" />
+    <Content Include="Content\bootstrap-duallistbox.css" />
+    <Content Include="Content\bootstrap-duallistbox.min.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\colorpicker.css" />
@@ -258,6 +260,7 @@
     <Content Include="Content\img\sprite.png" />
     <Content Include="Content\jquery.gritter.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\prettify.css" />
     <Content Include="Content\select2.css" />
     <Content Include="Content\error.css" />
     <Content Include="Content\common.css" />
@@ -273,6 +276,8 @@
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
+    <Content Include="Scripts\jquery.bootstrap-duallistbox.js" />
+    <Content Include="Scripts\jquery.bootstrap-duallistbox.min.js" />
     <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.gritter.min.js" />
     <Content Include="Scripts\jquery.ui.custom.js" />
@@ -402,6 +407,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\UserSystem\Views\Role\EditRolePermission.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\UserSystem\Views\Role\EditUserList.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

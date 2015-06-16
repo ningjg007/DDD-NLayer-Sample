@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonModule\DTOs\IdNameDTO.cs" />
     <Compile Include="Exceptions\DataExistsException.cs" />
     <Compile Include="Exceptions\ArgumentEmptyException.cs" />
     <Compile Include="Exceptions\LoginPasswordIncorrectException.cs" />

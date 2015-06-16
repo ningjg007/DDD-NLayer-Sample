@@ -35,7 +35,7 @@ namespace NLayer.Repository.UnitOfWork
 
             mb.Entity<Menu>().HasMany(x => x.Permissions).WithRequired(x => x.Menu);
 
-            mb.Entity<User>().HasMany(x => x.Roles).WithMany(x => x.Users).Map(x => x.MapLeftKey("User_Id").MapRightKey("Role_Id").ToTable("Role_User", "auth"));
+            mb.Entity<User>().HasMany(x => x.Groups).WithMany(x => x.Users).Map(x => x.MapLeftKey("User_Id").MapRightKey("RoleGroup_Id").ToTable("RoleGroup_User", "auth"));
 
             mb.Entity<User>().HasMany(x => x.Permissions).WithMany(x => x.Users).Map(x => x.MapLeftKey("User_Id").MapRightKey("Permission_Id").ToTable("User_Permission", "auth"));
 

@@ -42,6 +42,28 @@ namespace NLayer.Repository.UserSystemModule.Repositories
                 totalCount);
         }
 
+        public bool ExistsLoginName(User item)
+        {
+            IQueryable<User> entities = Table;
+            entities = entities.Where(x => x.LoginName == item.LoginName);
+            if (item.Id != Guid.Empty)
+            {
+                entities = entities.Where(x => x.Id != item.Id);
+            }
+            return entities.Any();
+        }
+
+        public bool ExistsEmail(User item)
+        {
+            IQueryable<User> entities = Table;
+            entities = entities.Where(x => x.Email == item.Email);
+            if (item.Id != Guid.Empty)
+            {
+                entities = entities.Where(x => x.Id != item.Id);
+            }
+            return entities.Any();
+        }
+
         public new bool Exists(User item)
         {
             IQueryable<User> entities = Table;

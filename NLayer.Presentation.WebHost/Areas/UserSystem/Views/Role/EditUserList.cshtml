@@ -1,0 +1,73 @@
+﻿@using NLayer.Application.CommonModule.DTOs
+@using NLayer.Application.UserSystemModule.DTOs
+@using PagedList.Mvc
+@model PagedList.IPagedList<NLayer.Application.UserSystemModule.DTOs.RoleDTO>
+@{
+    ViewBag.Title = "角色组用户管理";
+    var group = ViewBag.Group as RoleGroupDTO;
+    var allUsers = ViewBag.AllUsers as List<IdNameDTO>;
+    var existsUsers = ViewBag.ExistsUsers as List<IdNameDTO>;
+}
+
+<div id="content-header">
+    <h1>角色组 > 用户</h1>
+</div>
+<div id="breadcrumb">
+    <a href="@Url.Action("Index", "Home", new { area = "" }, null)" title="返回首页" class="tip-bottom"><i class="icon-home"></i> 首页</a>
+    <a href="@Url.Action("Index")">角色管理</a>
+    <a href="@Url.Action("RoleList", new { groupId = @group.Id })">@group.Name 角色组</a>
+    <a class="current">用户</a>
+</div>
+<div class="container-fluid">
+
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-content">
+                    @using (Ajax.BeginForm("EditUserList", new { groupId = group.Id }, new AjaxOptions { HttpMethod = "Post", OnSuccess = "ajaxRequestSuccess" }, new { @class = "form-horizontal" }))
+                    {
+                        <select multiple="multiple" size="10" name="users" id="listbox">
+                            @foreach (var user in allUsers)
+                            {
+                                if (existsUsers.FirstOrDefault(x => x.Id == user.Id) != null)
+                                {
+                                    <option value="@user.Id" selected="selected">@user.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@user.Id">@user.Name</option>
+                                }
+                            }
+                        </select>
+                        <div class="form-actions text-center">
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        </div>
+                    }
+                    <script>
+                        $(function () {
+                            $('#listbox').bootstrapDualListbox({
+                                nonSelectedListLabel: '未选择',
+                                selectedListLabel: '已选择',
+                                preserveSelectionOnMove: '已移动',
+                                filterTextClear: '显示全部',
+                                filterPlaceHolder: '筛选',
+                                moveSelectedLabel: '添加已选',
+                                moveAllLabel: '添加全部',
+                                removeSelectedLabel: '移除已选',
+                                removeAllLabel: '移除全部',
+                                infoText: '显示全部{0}条',
+                                infoTextFiltered: '<span class="label label-warning">已过滤</span>{0}条 共{1}条',
+                                infoTextEmpty: '空列表',
+                                moveOnSelect: false,
+                                nonSelectedFilter: '',
+                                bootstrap2Compatible: true
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

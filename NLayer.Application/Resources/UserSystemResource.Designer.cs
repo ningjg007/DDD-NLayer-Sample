@@ -61,11 +61,29 @@ namespace NLayer.Application.Resources {
         }
         
         /// <summary>
+        ///   查找类似 邮箱不能为空 的本地化字符串。
+        /// </summary>
+        internal static string Common_Email_Empty {
+            get {
+                return ResourceManager.GetString("Common_Email_Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 名称不能为空 的本地化字符串。
         /// </summary>
         internal static string Common_Name_Empty {
             get {
                 return ResourceManager.GetString("Common_Name_Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 邮箱&apos;{0}&apos;已存在 的本地化字符串。
+        /// </summary>
+        internal static string Email_Exists {
+            get {
+                return ResourceManager.GetString("Email_Exists", resourceCulture);
             }
         }
         
@@ -111,6 +129,15 @@ namespace NLayer.Application.Resources {
         internal static string Login_TokenEmpty {
             get {
                 return ResourceManager.GetString("Login_TokenEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 登陆名&apos;{0}&apos;已存在 的本地化字符串。
+        /// </summary>
+        internal static string LoginName_Exists {
+            get {
+                return ResourceManager.GetString("LoginName_Exists", resourceCulture);
             }
         }
         

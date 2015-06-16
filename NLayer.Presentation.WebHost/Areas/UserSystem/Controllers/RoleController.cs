@@ -22,14 +22,18 @@ namespace NLayer.Presentation.WebHost.Areas.UserSystem.Controllers
 
         IMenuService _menuService;
 
+        IUserService _userService;
+
         
         #region Constructor
 
-        public RoleController(IRoleService roleService, IRoleGroupService roleGroupService, IMenuService menuService)
+        public RoleController(IRoleService roleService, IRoleGroupService roleGroupService, IMenuService menuService,
+            IUserService userService)
         {
             _roleService = roleService;
             _roleGroupService = roleGroupService;
             _menuService = menuService;
+            _userService = userService;
         }
 
         #endregion
@@ -127,6 +131,48 @@ namespace NLayer.Presentation.WebHost.Areas.UserSystem.Controllers
             if (pList.Count > 0)
             {
                 _roleService.UpdateRolePermission(roleId, pList);
+            }
+
+            return Json(new AjaxResponse
+            {
+                Succeeded = true,
+                ShowMessage = true,
+                Message = CommonResource.Msg_Operate_Ok,
+                RedirectUrl = string.Empty
+            });
+        }
+
+        public ActionResult EditUserList(Guid groupId)
+        {
+            var group = _roleGroupService.FindBy(groupId);
+
+            var allUsers = _userService.GetAllUsersIdName();
+            var existsUsers = _roleGroupService.GetUsersIdName(groupId);
+
+            ViewBag.Group = group;
+            ViewBag.AllUsers = allUsers;
+            ViewBag.ExistsUsers = existsUsers;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditUserList(Guid groupId, List<string> users)
+        {
+            var pList = new List<Guid>();
+
+            foreach (var s in users)
+            {
+                Guid id;
+                if (Guid.TryParse(s, out id))
+                {
+                    pList.Add(id);
+                }
+            }
+
+            if (pList.Count > 0)
+            {
+                _roleGroupService.UpdateGroupUsers(groupId, pList);
             }
 
             return Json(new AjaxResponse

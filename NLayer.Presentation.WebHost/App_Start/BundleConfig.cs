@@ -9,15 +9,16 @@ namespace NLayer.Presentation.WebHost
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.min.js",
+                        "~/Scripts/jquery-1.7.2.min.js",
                         "~/Scripts/jquery.ui.custom.js",
                         "~/Scripts/jquery.gritter.min.js",
-                        "~/Scripts/plugins/jquery.unobtrusive/*.min.js"));
+                        "~/Scripts/plugins/jquery.unobtrusive/jquery.unobtrusive-ajax.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.min.js",
                       "~/Scripts/bootstrap-datepicker.js",
-                      "~/Scripts/bootstrap-colorpicker.js"));
+                      "~/Scripts/bootstrap-colorpicker.js",
+                      "~/Scripts/jquery.bootstrap-duallistbox.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/unicorn").Include(
                       "~/Scripts/unicorn.js"));
@@ -30,6 +31,8 @@ namespace NLayer.Presentation.WebHost
                       "~/Content/bootstrap-responsive.min.css",
                       "~/Content/datepicker.css",
                       "~/Content/colorpicker.css",
+                      "~/Content/bootstrap-duallistbox.min.css",
+                      "~/Content/prettify.css",
                       "~/Content/common.css",
                       "~/Content/unicorn.css",
                       "~/Content/unicorn.main.css",
