@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using NLayer.Application.Modules;
 using NLayer.Application.UserSystemModule.DTOs;
 using NLayer.Application.UserSystemModule.Services;
+using NLayer.Infrastructure.Authorize;
+using NLayer.Infrastructure.Authorize.AuthObject;
+using NLayer.Presentation.WebHost.Helper;
 using NLayer.Presentation.WebHost.Models;
 using NLayer.Presentation.WebHost.Resources;
 using PagedList;
@@ -16,7 +19,24 @@ namespace NLayer.Presentation.WebHost.Areas.UserSystem.Controllers
     {
         IUserService _userService;
 
-        IMenuService _menuService;
+        IMenuService _menuService; 
+        
+        private NLayerServiceResolver _serviceResolver;
+
+        public NLayerServiceResolver ServiceResolver
+        {
+            get { return _serviceResolver ?? (_serviceResolver = new NLayerServiceResolver()); }
+        }
+
+        //public IServiceResolver ServiceResolver { get; set; }
+
+        private IAuthorizeManager AuthorizeManager
+        {
+            get
+            {
+                return ServiceResolver.Resolve<IAuthorizeManager>();
+            }
+        }
 
         #region Constructor
 
@@ -138,11 +158,27 @@ namespace NLayer.Presentation.WebHost.Areas.UserSystem.Controllers
                 RedirectUrl = Url.Action("Index")
             }, JsonRequestBehavior.AllowGet);
         }
-        //
-        // GET: /UserSystem/User/
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
+
+        public ActionResult EffectiveUserPermission(Guid userId)
+        {
+            var user = _userService.FindBy(userId);
+
+            ViewBag.AuthorizeUser = AuthorizeManager.GetAuthorizeUserInfo(
+                new UserToken() { UserId = user.Id, LastLoginToken = user.LastLoginToken });
+
+            return View();
+        }
+
+        public ActionResult EffectPermission()
+        {
+            AuthorizeManager.ClearCache();
+            return Json(new AjaxResponse
+            {
+                Succeeded = true,
+                ShowMessage = true,
+                Message = "权限缓存清除成功",
+                RedirectUrl = Request.UrlReferrer == null ? Url.Action("Index") : Request.UrlReferrer.ToString()
+            }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

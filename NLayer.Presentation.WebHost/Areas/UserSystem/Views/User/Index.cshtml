@@ -14,51 +14,53 @@
         <a href="@Url.Action("Index")">用户管理</a>
 
     </div>
-    <div class="container-fluid">
+<div class="container-fluid">
 
-        <div class="row-fluid">
-            <div class="span12">
-                @using (Ajax.BeginForm("SearchUser", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "ajaxRequestSuccess" }, new { @class = "form-inline" }))
-                {
-                    <section>
-                        <input type="text" name="userName" id="userName" class="input-medium" placeholder="用户名称" value="@userName">&nbsp; &nbsp;
-                        <button type="submit" class="btn btn-primary">查询</button>&nbsp; &nbsp;
-                        <a href="@Url.Action("EditUser")" class="btn btn-success" id="addnew">新增用户</a>
-                    </section>
-                }
-                <div class="widget-box">
-                    <div class="widget-content nopadding">
-                        <table class="table table-bordered table-striped">
-                            <thead>
+    <div class="row-fluid">
+        <div class="span12">
+            @using (Ajax.BeginForm("SearchUser", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "ajaxRequestSuccess" }, new { @class = "form-inline" }))
+            {
+                <section>
+                    <input type="text" name="userName" id="userName" class="input-medium" placeholder="用户名称" value="@userName">&nbsp; &nbsp;
+                    <button type="submit" class="btn btn-primary">查询</button>&nbsp; &nbsp;
+                    <a href="@Url.Action("EditUser")" class="btn btn-success" id="addnew">新增用户</a>
+                    <a href="@Url.Action("EffectPermission", "User")" class="btn btn-warning EffectPermission">权限生效</a>
+                </section>
+            }
+            <div class="widget-box">
+                <div class="widget-content nopadding">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>用户名称</th>
+                                <th>用户登录名</th>
+                                <th>邮箱</th>
+                                <th>添加时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
                                 <tr>
-                                    <th>用户名称</th>
-                                    <th>用户登录名</th>
-                                    <th>邮箱</th>
-                                    <th>添加时间</th>
-                                    <th>操作</th>
+                                    <td>@item.Name</td>
+                                    <td>@item.LoginName</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Created.Display()</td>
+                                    <td>
+                                        <a href="@Url.Action("EditUserPermission", new { userId = @item.Id })"><i class="icon-list"></i>独立权限</a>
+                                        <a href="@Url.Action("EffectiveUserPermission", new { userId = @item.Id })"><i class="icon-list"></i>生效权限</a>
+                                        <a href="@Url.Action("EditUser", new { id = @item.Id })"><i class="icon-edit"></i>编辑</a>
+                                        <a href="@Url.Action("RemoveUser", new { id = @item.Id })" class="ajax-remove" data-name="@item.Name"><i class="icon-remove"></i>删除</a>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td>@item.Name</td>
-                                        <td>@item.LoginName</td>
-                                        <td>@item.Email</td>
-                                        <td>@item.Created.Display()</td>
-                                        <td>
-                                            <a href="@Url.Action("EditUserPermission", new { userId = @item.Id })"><i class="icon-list"></i>权限</a>
-                                            <a href="@Url.Action("EditUser", new { id = @item.Id })"><i class="icon-edit"></i>编辑</a>
-                                            <a href="@Url.Action("RemoveUser", new { id = @item.Id })" class="ajax-remove" data-name="@item.Name"><i class="icon-remove"></i>删除</a>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+                            }
+                        </tbody>
+                    </table>
                 </div>
-                <div class="pagination pagination-right">
-                    @Html.PagedListPager(
+            </div>
+            <div class="pagination pagination-right">
+                @Html.PagedListPager(
                     Model,
                     page => Url.Action(
                         "Index",
@@ -67,10 +69,33 @@
                             page,
                             userName
                         })),
-                        NLayer.Presentation.WebHost.DisplayExtensions.PagedListRenderOptions
+                    NLayer.Presentation.WebHost.DisplayExtensions.PagedListRenderOptions
                     )
-                </div>
             </div>
         </div>
     </div>
+</div>
+    
+<script>
+    $(document).ready(function () {
+        $('.EffectPermission').click(function () {
+            $('#confirm_modal').modal();
+            var url = $(this).attr('href');
+            $('#confirm_title').html('权限生效');
+            var name = $(this).attr('data-name');
+            $('#confirm_content').html('将清除权限缓存，确认吗？');
+            $('#confirm_confirm').one('click',function () {
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    dataType: "json",
+                    success: ajaxRequestSuccess
+                });
+                $('#confirm_modal').modal('hide');
+                return false;
+            });
+            return false;
+        });
+    });
+</script>
 

@@ -9,5 +9,7 @@ namespace NLayer.Infrastructure.Authorize.AuthObject
     public class MenuForAuthorize
     {
         public Guid MenuId { get; set; }
+
+        public string MenuName { get; set; }
     }
 }

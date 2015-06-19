@@ -22,5 +22,10 @@ namespace NLayer.Presentation.WebHost.Controllers
         {
             return View();
         }
+
+        public ActionResult WhatCanIdo()
+        {
+            return View();
+        }
     }
 }

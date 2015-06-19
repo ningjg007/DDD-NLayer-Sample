@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,6 +15,8 @@ namespace NLayer.Application.Managers
 {
     public class AuthorizeManager : IAuthorizeManager
     {
+        private static ConcurrentDictionary<string, string> CacheKeys = new ConcurrentDictionary<string, string>();
+
         private ICacheManager CacheManager { get; set; }
 
         private IAuthService AuthService { get; set; }
@@ -57,22 +60,16 @@ namespace NLayer.Application.Managers
             CacheManager.Remove(GetTokenKey(token));
         }
 
-        private string GetAuthToken(UserDTO user)
-        {
-            if (user == null)
-            {
-                throw new ArgumentNullException("user", @"user");
-            }
-            return string.Format("{0}_{1}", user.Id, user.LastLoginToken);
-        }
-
         private void SetCacheAuthUser(string authToken, UserForAuthorize authUser)
         {
+            var key = GetTokenKey(authToken);
             // 缓存起来
-            CacheManager.Set(GetTokenKey(authToken), authUser, 12 * 60);
+            CacheManager.Set(key, authUser, 12 * 60);
+
+            CacheKeys.TryAdd(key, key);
         }
 
-        private UserForAuthorize GetCurrentUserInfo(string token)
+        private UserForAuthorize GetAuthorizeUserInfo(string token, bool validateLoginToken = true)
         {
             var authUser = CacheManager.Get<UserForAuthorize>(GetTokenKey(token));
 
@@ -95,9 +92,12 @@ namespace NLayer.Application.Managers
                 }
             }
 
-            if (authUser == null || !AuthService.ValidateLoginToken(authUser.UserId, loginToken))
+            if (validateLoginToken)
             {
-                return null;
+                if (authUser == null || !AuthService.ValidateLoginToken(authUser.UserId, loginToken))
+                {
+                    return null;
+                }
             }
 
             return authUser;
@@ -124,8 +124,16 @@ namespace NLayer.Application.Managers
                     PermissionCode = x.PermissionCode,
                     MenuId = x.MenuId,
                     RoleId = x.RoleId,
-                    FromUser = x.FromUser
-                }).ToList();
+                    FromUser = x.FromUser,
+                    PermissionName = x.PermissionName,
+                    MenuName = x.MenuName,
+                    RoleName = x.RoleName,
+                    PermissionSortOrder = x.PermissionSortOrder,
+                    MenuSortOrder = x.MenuSortOrder,
+                    Module = (int)x.Module,
+                    ModuleName = x.ModuleName,
+                }).OrderBy(x => x.Module).ThenBy(x => x.MenuSortOrder)
+                .ThenBy(x => x.PermissionSortOrder).ToList();
             authUser.Menus = permissions.Select(x => new MenuForAuthorize()
             {
                 MenuId = x.MenuId
@@ -153,7 +161,22 @@ namespace NLayer.Application.Managers
         {
             var token = this.GetCurrentTokenFromCookies();
 
-            return GetCurrentUserInfo(token);
+            return GetAuthorizeUserInfo(token);
+        }
+
+        public UserForAuthorize GetAuthorizeUserInfo(UserToken user)
+        {
+            var token = user.GetAuthToken();
+
+            return GetAuthorizeUserInfo(token, false);
+        }
+
+        public void ClearCache()
+        {
+            foreach (var cacheKey in CacheKeys)
+            {
+                CacheManager.Remove(cacheKey.Key);
+            }
         }
 
         public void SignIn(string loginName, string password, bool rememberMe = false)
@@ -162,7 +185,7 @@ namespace NLayer.Application.Managers
 
             var authUser = GetAuthUserFromDb(user);
 
-            var dataToken = GetAuthToken(user);
+            var dataToken = new UserToken() {UserId = user.Id, LastLoginToken = user.LastLoginToken}.GetAuthToken();
 
             // Cache
             SetCacheAuthUser(dataToken, authUser);

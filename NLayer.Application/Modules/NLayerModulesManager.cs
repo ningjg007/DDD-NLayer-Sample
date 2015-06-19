@@ -18,11 +18,11 @@ namespace NLayer.Application.Modules
             {
                 _modules = new List<NLayerModules>
                 {
-                    new NLayerModules(NLayerModulesType.BootstrapSamples,
-                        ModulesResource.BootstrapSamples),
-
                     new NLayerModules(NLayerModulesType.UserSystem,
-                        ModulesResource.UserSystem)
+                        ModulesResource.UserSystem),
+
+                    new NLayerModules(NLayerModulesType.BootstrapSamples,
+                        ModulesResource.BootstrapSamples)
                 };
             }
         }

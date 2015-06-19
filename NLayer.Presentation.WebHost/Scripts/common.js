@@ -62,7 +62,13 @@ function ajaxRequestSuccess(resp) {
                 msg = null;
             }
             if (!!url) {
-                window.location.href = url;
+                if (!!msg) {
+                    setTimeout(function () {
+                        window.location.href = url;
+                    }, 1500);
+                } else {
+                    window.location.href = url;
+                }
             }
             if (!!msg) {
                 $.gritter.add({

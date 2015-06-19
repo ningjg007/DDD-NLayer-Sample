@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NLayer.Application.Exceptions;
+using NLayer.Application.Modules;
 using NLayer.Application.Resources;
 using NLayer.Application.UserSystemModule.Converters;
 using NLayer.Application.UserSystemModule.DTOs;
@@ -143,6 +144,8 @@ namespace NLayer.Application.UserSystemModule.Services
                 throw new ArgumentException(id.ToString(), "id");
             }
 
+            user.LastLoginToken = user.LastLoginToken ?? string.Empty;
+
             if (!user.LastLoginToken.EqualsIgnoreCase(token))
             {
                 throw new DataNotFoundException(UserSystemResource.User_NotExists);
@@ -171,7 +174,14 @@ namespace NLayer.Application.UserSystemModule.Services
                     PermissionId = x.Id,
                     PermissionCode = x.Code,
                     MenuId = x.Menu.Id,
-                    RoleId = role.Id
+                    RoleId = role.Id,
+                    PermissionName = x.Name,
+                    MenuName = x.Menu.Name,
+                    RoleName = role.Name,
+                    PermissionSortOrder = x.SortOrder,
+                    MenuSortOrder = x.Menu.SortOrder,
+                    Module = (NLayerModulesType)Enum.Parse(typeof(NLayerModulesType), x.Menu.Module),
+                    ModuleName = NLayerModulesManager.Instance.GetModulesName(x.Menu.Module)
                 }));
             }
 
@@ -192,7 +202,13 @@ namespace NLayer.Application.UserSystemModule.Services
                 PermissionId = x.Id,
                 PermissionCode = x.Code,
                 MenuId = x.Menu.Id,
-                FromUser = true
+                FromUser = true,
+                PermissionName = x.Name,
+                MenuName = x.Menu.Name,
+                PermissionSortOrder = x.SortOrder,
+                MenuSortOrder = x.Menu.SortOrder,
+                Module = (NLayerModulesType)Enum.Parse(typeof(NLayerModulesType), x.Menu.Module),
+                ModuleName = NLayerModulesManager.Instance.GetModulesName(x.Menu.Module)
             }).ToList()
                 : new List<PermissionForAuthDTO>();
         }

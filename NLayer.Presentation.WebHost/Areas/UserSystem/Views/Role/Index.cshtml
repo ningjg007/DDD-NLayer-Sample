@@ -24,6 +24,7 @@
                     <input type="text" name="groupName" id="groupName" class="input-medium" placeholder="角色组名称" value="@groupName">&nbsp; &nbsp;
                     <button type="submit" class="btn btn-primary">查询</button>&nbsp; &nbsp;
                     <a href="@Url.Action("EditGroup")" class="btn btn-success" id="addnew">新增角色组</a>
+                    <a href="@Url.Action("EffectPermission", "User")" class="btn btn-warning EffectPermission">权限生效</a>
                 </section>
             }
             <div class="widget-box">
@@ -78,3 +79,27 @@
     </div>
 
 </div>
+
+
+<script>
+    $(document).ready(function () {
+        $('.EffectPermission').click(function () {
+            $('#confirm_modal').modal();
+            var url = $(this).attr('href');
+            $('#confirm_title').html('权限生效');
+            var name = $(this).attr('data-name');
+            $('#confirm_content').html('将清除权限缓存，确认吗？');
+            $('#confirm_confirm').one('click',function () {
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    dataType: "json",
+                    success: ajaxRequestSuccess
+                });
+                $('#confirm_modal').modal('hide');
+                return false;
+            });
+            return false;
+        });
+    });
+</script>

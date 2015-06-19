@@ -1,0 +1,71 @@
+﻿@using NLayer.Infrastructure.Authorize.AuthObject
+
+@{
+    ViewBag.Title = "我的权限";
+
+    var user = ViewBag.CurrentUser as UserForAuthorize;
+}
+
+<div class="container-fluid">
+
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon">
+                        <i class="icon-align-justify"></i>
+                    </span>
+                    <h5>我的权限</h5>
+                </div>
+                <div class="widget-content">
+                    @if (user == null)
+                    {
+                       <p>还没有登陆</p> 
+                    }
+                    else
+                    {
+                        <p>@user.UserName 你好！</p>
+                        <p>你的权限如下：</p>
+
+                        <div class="widget-content">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>模块</th>
+                                        <th>菜单</th>
+                                        <th>权限</th>
+                                        <th>来自</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        var i = 1;
+                                    }
+                                    @foreach (var item in user.Permissions)
+                                    {
+                                        <tr>
+                                            <td>@(i++)</td>
+                                            <td>@item.ModuleName</td>
+                                            <td>@item.MenuName</td>
+                                            <td>@item.PermissionName</td>
+                                            @if (@item.FromUser)
+                                            {
+                                                <td>独立权限</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@item.RoleName</td>
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

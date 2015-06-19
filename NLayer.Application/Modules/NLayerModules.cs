@@ -8,8 +8,8 @@ namespace NLayer.Application.Modules
 {
     public enum NLayerModulesType
     {
+        UserSystem,
         BootstrapSamples,
-        UserSystem
     }
 
     public class NLayerModules
