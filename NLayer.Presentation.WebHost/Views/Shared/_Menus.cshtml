@@ -1,4 +1,10 @@
-﻿<div id="sidebar">
+﻿@using NLayer.Application.Modules
+@model List<NLayer.Infrastructure.Authorize.AuthObject.MenuForAuthorize>
+@{
+    var menuGroups = Model.Where(x => x.Module > 2).GroupBy(x => x.Module).OrderBy(x => x.Key);
+}
+
+<div id="sidebar">
     <a href="#" class="visible-phone"><i class="icon icon-home"></i> 首页</a>
     <ul>
         <li><a href="@Url.Action("Index", "Home", new { area = "" }, null)"><i class="icon icon-home"></i> <span>首页</span></a></li>
@@ -20,6 +26,20 @@
                 <li><a href="@Url.Action("Layouts", "Bootstrap", new { area = "Samples" }, null)">布局</a></li>
             </ul>
         </li>
+        @foreach (var g in menuGroups)
+        {
+            var moduleType = (NLayerModulesType)g.Key;
+            var moduleName = NLayerModulesManager.Instance.GetModulesName(moduleType);
+            <li class="submenu" data-menu="@moduleType">
+                <a href="#"><i class="icon icon-list"></i> <span>@moduleName</span> <span class="label">@g.Count()</span></a>
+                <ul>
+                    @foreach (var m in g.ToList())
+                    {
+                        <li><a href="@m.MenuUrl">@m.MenuName</a></li>
+                    }
+                </ul>
+            </li>
+        }
         <li>
             <a href="#"><i class="icon icon-inbox"></i> <span>其他</span></a>
         </li>

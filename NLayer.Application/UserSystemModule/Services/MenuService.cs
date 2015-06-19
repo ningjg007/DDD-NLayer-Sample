@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using NLayer.Application.Exceptions;
+using NLayer.Application.Modules;
 using NLayer.Application.Resources;
 using NLayer.Application.UserSystemModule.Converters;
 using NLayer.Application.UserSystemModule.DTOs;
@@ -165,8 +166,12 @@ namespace NLayer.Application.UserSystemModule.Services
         public IPagedList<MenuDTO> FindBy(string module, string name, int pageNumber, int pageSize)
         {
             var list = _Repository.FindBy(module, name, pageNumber, pageSize);
+
+            var result = list.OrderBy(x => NLayerModulesManager.Instance.GetModulesType(x.Module))
+                .ThenBy(x => x.SortOrder).ToList();
+
             return new StaticPagedList<MenuDTO>(
-                list.ToList().Select(x => x.ToDto()),
+                result.Select(x => x.ToDto()),
                 pageNumber,
                 pageSize,
                 list.TotalItemCount);

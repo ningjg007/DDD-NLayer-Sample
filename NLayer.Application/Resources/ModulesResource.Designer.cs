@@ -61,6 +61,15 @@ namespace NLayer.Application.Resources {
         }
         
         /// <summary>
+        ///   查找类似 权限菜单示例 的本地化字符串。
+        /// </summary>
+        internal static string AuthMenuSample {
+            get {
+                return ResourceManager.GetString("AuthMenuSample", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Bootstrap示例 的本地化字符串。
         /// </summary>
         internal static string BootstrapSamples {

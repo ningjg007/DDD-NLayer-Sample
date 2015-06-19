@@ -9,6 +9,7 @@ using NLayer.Application.UserSystemModule.Services;
 using NLayer.Infrastructure.Authorize;
 using NLayer.Infrastructure.Authorize.AuthObject;
 using NLayer.Infrastructure.Utility.Caching;
+using NLayer.Infrastructure.Utility.Extensions;
 using NLayer.Infrastructure.Utility.Helper;
 
 namespace NLayer.Application.Managers
@@ -127,6 +128,7 @@ namespace NLayer.Application.Managers
                     FromUser = x.FromUser,
                     PermissionName = x.PermissionName,
                     MenuName = x.MenuName,
+                    MenuUrl = x.MenuUrl,
                     RoleName = x.RoleName,
                     PermissionSortOrder = x.PermissionSortOrder,
                     MenuSortOrder = x.MenuSortOrder,
@@ -136,8 +138,11 @@ namespace NLayer.Application.Managers
                 .ThenBy(x => x.PermissionSortOrder).ToList();
             authUser.Menus = permissions.Select(x => new MenuForAuthorize()
             {
-                MenuId = x.MenuId
-            }).Distinct().ToList();
+                Module = (int)x.Module,
+                MenuId = x.MenuId,
+                MenuName = x.MenuName,
+                MenuUrl = x.MenuUrl,
+            }).DistinctBy(x => x.MenuId).ToList();
 
             return authUser;
         }

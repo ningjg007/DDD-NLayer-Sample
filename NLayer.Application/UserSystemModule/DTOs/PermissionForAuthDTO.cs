@@ -19,6 +19,8 @@ namespace NLayer.Application.UserSystemModule.DTOs
 
         public string MenuName { get; set; }
 
+        public string MenuUrl { get; set; }
+
         public string RoleName { get; set; }
 
         public int PermissionSortOrder { get; set; }

@@ -22,7 +22,10 @@ namespace NLayer.Application.Modules
                         ModulesResource.UserSystem),
 
                     new NLayerModules(NLayerModulesType.BootstrapSamples,
-                        ModulesResource.BootstrapSamples)
+                        ModulesResource.BootstrapSamples),
+
+                    new NLayerModules(NLayerModulesType.AuthMenuSample,
+                        ModulesResource.AuthMenuSample),
                 };
             }
         }
@@ -36,6 +39,21 @@ namespace NLayer.Application.Modules
         public static NLayerModulesManager Instance
         {
             get { return _Instance ?? (_Instance = new NLayerModulesManager()); }
+        }
+
+        public int GetModulesType(string typeStr)
+        {
+            NLayerModulesType type;
+            if (Enum.TryParse(typeStr, true, out type))
+            {
+                var m = _modules.FirstOrDefault(x => x.Type == type);
+                if (m != null)
+                {
+                    return (int)m.Type;
+                }
+            }
+
+            return 0;
         }
 
         public string GetModulesName(string typeStr)

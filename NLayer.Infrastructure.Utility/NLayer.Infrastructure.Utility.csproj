@@ -44,6 +44,7 @@
     <Compile Include="Caching\CacheExtensions.cs" />
     <Compile Include="Caching\ICacheManager.cs" />
     <Compile Include="Caching\LocalCacheManager.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Helper\Const.cs" />
     <Compile Include="Helper\TextHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

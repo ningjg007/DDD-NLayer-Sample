@@ -2,6 +2,7 @@
 @{
     var user = ViewBag.CurrentUser as UserForAuthorize;
     var loginName = user == null ? string.Empty : user.LoginName;
+    var menus = user == null ? new List<MenuForAuthorize>() : user.Menus;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +30,7 @@
             </ul>
         </div>
 
-        @Html.Partial("_Menus")
+        @Html.Partial("_Menus", menus)
 
         @Scripts.Render("~/bundles/jquery")
 

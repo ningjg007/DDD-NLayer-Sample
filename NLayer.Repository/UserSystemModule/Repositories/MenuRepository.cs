@@ -34,7 +34,8 @@ namespace NLayer.Repository.UserSystemModule.Repositories
 
             var totalCountQuery = entities.FutureCount();
             var resultQuery = entities
-                .OrderBy(x => x.SortOrder)
+                .OrderBy(x => x.Module)
+                .ThenBy(x => x.SortOrder)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Future();
