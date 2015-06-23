@@ -130,6 +130,9 @@ namespace NLayer.Presentation.WebHost.Areas.UserSystem.Controllers
         [HttpPost]
         public ActionResult EditUser(UserDTO user)
         {
+            if (user.LastLogin == DateTime.MinValue)    //最后登录时间字段为空时，数据为datetime默认的{0001/1/1 0:00:00}，新增或修改用户时报错
+                user.LastLogin = Convert.ToDateTime("1900-01-01T00:00:00.000");
+
             if (user.Id == Guid.Empty)
             {
                 _userService.Add(user);

@@ -69,6 +69,9 @@ namespace NLayer.Application.UserSystemModule.Services
                 current.Created = persisted.Created;    //不修改创建时间
                 current.LoginPwd = persisted.LoginPwd;    //不修改密码
 
+                if (current.LastLogin == DateTime.MinValue)    //最后登录时间字段为空时，数据为datetime默认的{0001/1/1 0:00:00}，新增或修改用户时报错
+                    current.LastLogin = Const.SqlServerNullDateTime;
+
                 if (current.Name.IsNullOrBlank())
                 {
                     throw new DataExistsException(UserSystemResource.Common_Name_Empty);
